@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./Header.css";
 
 import indianFlag from "../../assets/img/flag/india.PNG";
@@ -22,43 +24,44 @@ const Header = () => {
                   {/* <!-- start language --> */}
                   <div className="aa-language">
                     <div className="dropdown">
-                      <a
-                        className="btn dropdown-toggle"
-                        href="#"
+                      <button
+                        className="btn btn-transparent dropdown-toggle"
                         type="button"
-                        id="dropdownMenu1"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="true"
+                        id="dropdownMenu2"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
                         <img src={indianFlag} alt="indian flag" />
                         INDIA
                         <span className="caret"></span>
-                      </a>
+                      </button>
                       <ul
                         className="dropdown-menu"
-                        aria-labelledby="dropdownMenu1"
+                        aria-labelledby="dropdownButton2"
                       >
-                        <li>
-                          <a href="#">
+                        <li className="ps-3">
+                          <a
+                            href="#"
+                            className="d-flex align-items-center gap-1"
+                          >
                             <img src={americanFlag} alt="" />
                             USA
                           </a>
                         </li>
-                        <li>
-                          <a href="#">
-                            <img src={indianFlag} alt="" />
-                            INDIA
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
+                        <li className="ps-3">
+                          <a
+                            href="#"
+                            className="d-flex align-items-center gap-1"
+                          >
                             <img src={frenchFlag} alt="" />
                             FRENCH
                           </a>
                         </li>
-                        <li>
-                          <a href="#">
+                        <li className="ps-3">
+                          <a
+                            href="#"
+                            className="d-flex align-items-center gap-1"
+                          >
                             <img src={englishFlag} alt="" />
                             ENGLISH
                           </a>
@@ -71,39 +74,49 @@ const Header = () => {
                   {/* <!-- start currency --> */}
                   <div className="aa-currency">
                     <div className="dropdown">
-                      <a
-                        className="btn dropdown-toggle"
-                        href="#"
+                      <button
+                        className="btn btn-transparent dropdown-toggle"
                         type="button"
-                        id="dropdownMenu1"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="true"
+                        id="dropdownMenu3"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
                         <i className="fa fa-usd"></i>USD
                         <span className="caret"></span>
-                      </a>
+                      </button>
                       <ul
                         className="dropdown-menu"
-                        aria-labelledby="dropdownMenu1"
+                        aria-labelledby="dropdownMenu3"
                       >
-                        <li>
-                          <a href="#">
+                        <li className="ps-3">
+                          <a
+                            href="#"
+                            className="text-black text-decoration-none d-flex align-items-center gap-1"
+                          >
                             <i className="fa fa-euro"></i>EURO
                           </a>
                         </li>
-                        <li>
-                          <a href="#">
+                        <li className="ps-3">
+                          <a
+                            href="#"
+                            className="text-black text-decoration-none d-flex align-items-center gap-1"
+                          >
                             <i className="fa fa-usd"></i>USD
                           </a>
                         </li>
-                        <li>
-                          <a href="#">
+                        <li className="ps-3">
+                          <a
+                            href="#"
+                            className="text-black text-decoration-none d-flex align-items-center gap-1"
+                          >
                             <i className="fa fa-inr"></i>INR
                           </a>
                         </li>
-                        <li>
-                          <a href="#">
+                        <li className="ps-3">
+                          <a
+                            href="#"
+                            className="text-black text-decoration-none d-flex align-items-center gap-1"
+                          >
                             <i className="fa fa-jpy"></i>YEN
                           </a>
                         </li>
@@ -157,7 +170,7 @@ const Header = () => {
                 <div className="aa-logo">
                   {/* <!-- Text based logo --> */}
                   <a href="index.html">
-                    <span className="fa fa-shopping-cart"></span>
+                    <span className="fa-solid fa-cart-shopping"></span>
                     <p>
                       Quagri<strong>Fresh</strong> <span>Fresh & Healthy</span>
                     </p>
