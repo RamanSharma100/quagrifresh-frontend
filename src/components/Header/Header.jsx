@@ -130,6 +130,12 @@ const Header = () => {
                       <span className="fa fa-phone-alt  "></span>+91-8660436470
                     </p>
                   </div>
+                  <div className="cellphone hidden-xs">
+                    <p>
+                      <span className="fa fa-envelope  "></span>{" "}
+                      quagrifresh@gmail.com
+                    </p>
+                  </div>
                   {/* <!-- / cellphone --> */}
                 </div>
 
