@@ -19,7 +19,7 @@ ul {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: #333333;
 }
 
@@ -365,7 +365,7 @@ img {
 
 #aa-header .aa-header-top .aa-header-top-right .aa-head-top-nav-right li a {
     display: inline-block;
-    color: #333333;
+    color: #333333 !important;
     border-right: 1px solid #ddd;
     font-size: 14px;
     padding: 5px 8px;
@@ -608,8 +608,9 @@ img {
 }
 
 #aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary ul li .aa-cartbox-info h4 a {
-    color: #333333;
+    color: #333333 !important;
     letter-spacing: 0.5px;
+    text-decoration: none !important;
 }
 
 #aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary ul li .aa-cartbox-info p {
@@ -688,7 +689,7 @@ img {
 }
 
 #menu .menu-area .navbar-default .navbar-nav li a {
-    color: #fff;
+    color: #fff !important;
     font-size: 16px;
     padding: 10px 15px;
     -webkit-transition: all 0.5s;
@@ -699,7 +700,7 @@ img {
 }
 
 #menu .menu-area .navbar-default .navbar-nav .open a {
-    background-color: #fff;
+    background-color: #fff !important;
 }
 
 #menu .menu-area .navbar-default .navbar-nav .dropdown-menu li a {
@@ -1677,13 +1678,14 @@ img {
 .video_area .video_text .icon_video a {
     width: 80px;
     height: 80px;
-    color: #fff;
+    color: #fff !important;
     font-size: 30px;
     line-height: 80px;
     border-radius: 50%;
     background: #78b454;
     text-align: center;
     display: inline-block;
+    text-decoration: none !important;
 }
 
 .video_area .video_text .icon_video a i {
@@ -1824,11 +1826,11 @@ a.video-play-btn {
 }
 
 .about .about_box a {
-    color: #fff;
+    color: #fff !important;
     font-size: 17px;
     line-height: 29px;
-    background: #052501;
-    border: #052501 solid 1px;
+    background: #052501 !important;
+    border: #052501 solid 1px !important;
     padding: 12px 40px;
     display: inline-block;
     width: 231px;
@@ -1958,7 +1960,7 @@ a.video-play-btn {
 }
 
 .aa-latest-blog-single .aa-blog-info .aa-blog-title a {
-    color: #222;
+    color: #222 !important;
     font-size: 18px;
     -webkit-transition: all 0.5s ease 0s;
     -moz-transition: all 0.5s ease 0s;
@@ -2035,6 +2037,7 @@ a.video-play-btn {
 #aa-client-brand .aa-client-brand-area .aa-client-brand-slider li a {
     display: block;
     padding: 20px 0;
+    color: #000 !important;
 }
 
 #aa-client-brand .aa-client-brand-area .aa-client-brand-slider li a img {
@@ -2162,7 +2165,7 @@ a.video-play-btn {
 }
 
 #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content .breadcrumb a {
-    color: white;
+    color: white !important;
 }
 
 #aa-product-category {

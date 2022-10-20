@@ -135,23 +135,31 @@ const Header = () => {
 
                 {/* <!-- / header top left --> */}
                 <div className="aa-header-top-right">
-                  <ul className="aa-head-top-nav-right">
+                  <ul className="aa-head-top-nav-right mb-0">
                     <li>
-                      <a href="account.html">My Account</a>
+                      <Link className="text-decoration-none" to="/account">
+                        My Account
+                      </Link>
                     </li>
                     <li className="hidden-xs">
-                      <a href="wishlist.html">Wishlist</a>
+                      <Link className="text-decoration-none" to="/wishlist">
+                        Wishlist
+                      </Link>
                     </li>
                     <li className="hidden-xs">
-                      <a href="cart.html">My Cart</a>
+                      <Link className="text-decoration-none" to="/cart">
+                        My Cart
+                      </Link>
                     </li>
                     <li className="hidden-xs">
-                      <a href="checkout.html">Checkout</a>
+                      <Link className="text-decoration-none" to="/checkout">
+                        Checkout
+                      </Link>
                     </li>
                     <li>
-                      <a href="" data-toggle="modal" data-target="#login-modal">
+                      <Link className="text-decoration-none" to="/login">
                         Login
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -169,12 +177,12 @@ const Header = () => {
                 {/* <!-- logo  --> */}
                 <div className="aa-logo">
                   {/* <!-- Text based logo --> */}
-                  <a href="index.html">
+                  <Link to="/" className="text-black">
                     <span className="fa-solid fa-cart-shopping"></span>
                     <p>
                       Quagri<strong>Fresh</strong> <span>Fresh & Healthy</span>
                     </p>
-                  </a>
+                  </Link>
                   {/* <!-- img based logo --> */}
                 </div>
                 {/* <!-- / logo  -->
