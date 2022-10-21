@@ -859,23 +859,21 @@ img {
 ====================*/
 
 #aa-slider {
-    float: left;
-    display: inline;
+    position: relative !important;
     width: 100%;
+    height: 600px;
+    overflow: hidden !important;
 }
 
 #aa-slider .aa-slider-area {
-    display: inline;
-    float: left;
     width: 100%;
 }
 
 #aa-slider .aa-slider-area .seq-title {
-    left: 19%;
-    margin-right: 0;
+    /* left: 50%; */
     position: absolute;
-    top: 30%;
-    width: 57%;
+    top: 50%;
+    width: 100%;
     text-align: center;
 }
 

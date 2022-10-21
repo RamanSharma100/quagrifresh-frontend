@@ -426,3 +426,7 @@ h2 {
 .navbar-default .navbar-toggle:focus {
     background-color: #3fc35f;
 }
+
+.rsis-container {
+    position: relative !important;
+}

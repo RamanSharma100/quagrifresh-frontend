@@ -1,7 +1,19 @@
 import "./Home.css";
 
+import {
+  Slider,
+  AboutSection,
+  Promo,
+} from "../../components/HomePageComponents";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Slider />
+      <AboutSection />
+      <Promo />
+    </>
+  );
 };
 
 export default Home;
