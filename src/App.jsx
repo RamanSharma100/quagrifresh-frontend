@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import { Header, Nav } from "./components";
+import { Header, Nav, Footer } from "./components";
 import { Home } from "./pages";
 
 const App = () => {
@@ -31,6 +31,7 @@ const App = () => {
 
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
+      <Footer />
     </div>
   );
 };
