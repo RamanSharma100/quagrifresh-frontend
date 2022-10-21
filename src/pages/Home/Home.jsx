@@ -4,6 +4,9 @@ import {
   Slider,
   AboutSection,
   Promo,
+  VideoSection,
+  SupportSection,
+  PricingSection,
 } from "../../components/HomePageComponents";
 
 const Home = () => {
@@ -12,6 +15,9 @@ const Home = () => {
       <Slider />
       <AboutSection />
       <Promo />
+      <VideoSection />
+      <SupportSection />
+      <PricingSection />
     </>
   );
 };

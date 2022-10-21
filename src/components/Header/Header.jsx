@@ -10,6 +10,8 @@ import englishFlag from "../../assets/img/flag/english.jpg";
 import frontCart1 from "../../assets/img/Frontcart/1.jpg";
 import frontCart2 from "../../assets/img/Frontcart/2.png";
 
+import Logo from "../../assets/img/logo.jpeg";
+
 const Header = () => {
   return (
     <header id="aa-header">
@@ -178,13 +180,15 @@ const Header = () => {
       <div className="aa-header-bottom">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <div className="aa-header-bottom-area">
+            <div className="col-md-12 ">
+              <div className="aa-header-bottom-area d-flex align-items-center justify-content-between">
                 {/* <!-- logo  --> */}
                 <div className="aa-logo">
                   {/* <!-- Text based logo --> */}
-                  <Link to="/" className="text-black">
-                    <span className="fa-solid fa-cart-shopping"></span>
+                  <Link to="/" className="text-black d-flex align-items-center">
+                    <span>
+                      <img src={Logo} alt="logo" height={90} />
+                    </span>
                     <p>
                       Quagri<strong>Fresh</strong> <span>Fresh & Healthy</span>
                     </p>
@@ -192,7 +196,22 @@ const Header = () => {
                   {/* <!-- img based logo --> */}
                 </div>
                 {/* <!-- / logo  -->
-               <!-- cart box --> */}
+               
+                {/* <!-- search box --> */}
+                <div className="aa-search-box">
+                  <form action="">
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="Search here"
+                    />
+                    <button type="submit">
+                      <span className="fa fa-search"></span>
+                    </button>
+                  </form>
+                </div>
+                {/* <!-- / search box -->              */}
                 <div className="aa-cartbox">
                   <a className="aa-cart-link" href="#">
                     <span className="fa fa-shopping-basket"></span>
@@ -243,21 +262,6 @@ const Header = () => {
                   </div>
                 </div>
                 {/* <!-- / cart box --> */}
-                {/* <!-- search box --> */}
-                <div className="aa-search-box">
-                  <form action="">
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      placeholder="Search here"
-                    />
-                    <button type="submit">
-                      <span className="fa fa-search"></span>
-                    </button>
-                  </form>
-                </div>
-                {/* <!-- / search box -->              */}
               </div>
             </div>
           </div>
