@@ -5085,9 +5085,13 @@ select:focus,
     min-height: 545px;
     padding-left: 15px;
     padding-right: 15px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/img/extras/wp10066955-dairy-products-wallpapers.jpg");
     background-repeat: no-repeat;
     background-position: center 0;
     background-size: cover;
+    background-attachment: fixed;
+
+
 }
 
 @media (max-width: 576px) {

@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { Header, Nav, Footer } from "./components";
-import { Home } from "./pages";
+import { About, Home } from "./pages";
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<h1>About</h1>} />
+        <Route path="/about" element={<About />} />
 
         <Route path="/account" element={<h1>Account</h1>} />
         <Route path="/wishlist" element={<h1>Wishlist</h1>} />

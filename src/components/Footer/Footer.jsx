@@ -3,7 +3,7 @@ const Footer = () => {
     <section>
       <footer id="aa-footer">
         <h1 className="display-5 mb-0 pb-0 text-success fw-normal text-center mt-4">
-          ___________________________________________
+          _________________________________________________________________________
         </h1>
         <div className="footer1 mt-0">
           <h1 className="display-5 mt-5 fw-normal"> QUAGRIFRESH </h1>

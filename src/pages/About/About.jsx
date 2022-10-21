@@ -1,19 +1,22 @@
+import TMember1 from "../../assets/img/Team members/Tanisha.jpeg";
+import TMember2 from "../../assets/img/Team members/Terrence.jpeg";
+import TMember3 from "../../assets/img/Team members/Aaron.jpeg";
+import TMember4 from "../../assets/img/Team members/Raman.jpeg";
+import TMember5 from "../../assets/img/Team members/Tonya.jpeg";
+
 import "./About.css";
 
 const About = () => {
   return (
     <>
-      <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15">
+      <section class="bg-title-page flex-c-m ">
         <h2 class="tit6 t-center">About Us</h2>
       </section>
-      <br />
-      <br />
-      <br />
 
-      <section class="p-t-116 p-b-110 t-center p-l-15 p-r-15">
-        <span class="tit2 t-center">QuagriFresh</span>
+      <section class="py-5 t-center p-l-15 p-r-15">
+        <span class="tit2 pb-5 t-center">QuagriFresh</span>
         <br />
-        <h3 class="tit3 t-center m-b-35 m-t-5">Our Story</h3>
+        <h3 class="tit3 t-center m-b-35 mt-5">Our Story</h3>
 
         <p class="t-center size32 m-l-r-auto">
           Fusce at risus eget mi auctor pulvinar. Suspendisse maximus venenatis
@@ -43,8 +46,9 @@ const About = () => {
                         <a
                           class="popup-video"
                           href="https://www.youtube.com/watch?v=HWnXId_Zg4k"
+                          target="_blank"
                         >
-                          <i class="ti-control-play"></i>
+                          <i class="fa fa-play"></i>
                         </a>
                       </div>
                     </div>
@@ -60,19 +64,19 @@ const About = () => {
           <span class="tit2 t-center">Meet Our Team</span>
           <br />
           <br />
-          <h3 class="tit5 t-center m-b-50 m-t-5">
+          <h3 class="tit5 t-center mb-5 mt-5">
             "People who made QuagriFresh Reality!"
           </h3>
           <br />
           <br />
           <br />
 
-          <div class="row">
-            <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
+          <div class="row d-flex">
+            <div class="col-md-8 col-lg-4 mx-auto pb-5">
               <div class="blo5 pos-relative p-t-60">
                 <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
                   <a href="#">
-                    <img src="img/Team members/Tanisha.jpeg" alt="IGM-AVATAR" />
+                    <img src={TMember1} alt="IGM-AVATAR" />
                   </a>
                 </div>
 
@@ -92,125 +96,99 @@ const About = () => {
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
-                <div class="blo5 pos-relative p-t-60">
-                  <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
-                    <a href="#">
-                      <img
-                        src="img/Team members/Terrence.jpeg"
-                        alt="IGM-AVATAR"
-                      />
-                    </a>
-                  </div>
+            <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
+              <div class="blo5 pos-relative p-t-60">
+                <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
+                  <a href="#">
+                    <img src={TMember4} alt="IGM-AVATAR" />
+                  </a>
+                </div>
 
-                  <div class="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
-                    <a href="#" class="txt34 dis-block p-b-6">
-                      Terrence Tay
-                    </a>
+                <div class="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
+                  <a href="#" class="txt34 dis-block p-b-6">
+                    Raman Sharma
+                  </a>
 
-                    <span class="dis-block t-center txt35 p-b-25">
-                      AI/Data Analytics
-                    </span>
+                  <span class="dis-block t-center txt35 p-b-25">
+                    Backend & Deployment
+                  </span>
 
-                    <span class="dis-block t-center txt36 p-b-25">
-                      Singapore
-                    </span>
+                  <span class="dis-block t-center txt36 p-b-25">India</span>
 
-                    <p class="t-center">Consultant - EY</p>
-                  </div>
+                  <p class="t-center">Engineering Student (CSE)</p>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
-                  <div class="blo5 pos-relative p-t-60">
-                    <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
-                      <a href="#">
-                        <img
-                          src="img/Team members/Aaron.jpeg"
-                          alt="IGM-AVATAR"
-                        />
-                      </a>
-                    </div>
+            </div>
 
-                    <div class="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
-                      <a href="#" class="txt34 dis-block p-b-6">
-                        Aaron Masuba
-                      </a>
-
-                      <span class="dis-block t-center txt35 p-b-25">
-                        QR Code
-                      </span>
-
-                      <span class="dis-block t-center txt36 p-b-25">
-                        Bangladesh
-                      </span>
-
-                      <p class="t-center">Engineering student (EEE)</p>
-                    </div>
-                  </div>
+            <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
+              <div class="blo5 pos-relative p-t-60">
+                <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
+                  <a href="#">
+                    <img src={TMember2} alt="IGM-AVATAR" />
+                  </a>
                 </div>
-                <div class="row">
-                  <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
-                    <div class="blo5 pos-relative p-t-60">
-                      <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
-                        <a href="#">
-                          <img
-                            src="img/Team members/Raman.jpeg"
-                            alt="IGM-AVATAR"
-                          />
-                        </a>
-                      </div>
 
-                      <div class="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
-                        <a href="#" class="txt34 dis-block p-b-6">
-                          Raman Sharma
-                        </a>
+                <div class="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
+                  <a href="#" class="txt34 dis-block p-b-6">
+                    Terrence Tay
+                  </a>
 
-                        <span class="dis-block t-center txt35 p-b-25">
-                          Backend & Deployment
-                        </span>
+                  <span class="dis-block t-center txt35 p-b-25">
+                    AI/Data Analytics
+                  </span>
 
-                        <span class="dis-block t-center txt36 p-b-25">
-                          India
-                        </span>
+                  <span class="dis-block t-center txt36 p-b-25">Singapore</span>
 
-                        <p class="t-center">Engineering Student (CSE)</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
-                      <div class="blo5 pos-relative p-t-60">
-                        <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
-                          <a href="#">
-                            <img
-                              src="img/Team members/Tonya.jpeg"
-                              alt="IGM-AVATAR"
-                            />
-                          </a>
-                        </div>
+                  <p class="t-center">Consultant - EY</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
+              <div class="blo5 pos-relative p-t-60">
+                <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
+                  <a href="#">
+                    <img src={TMember3} alt="IGM-AVATAR" />
+                  </a>
+                </div>
 
-                        <div class="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
-                          <a href="#" class="txt34 dis-block p-b-6">
-                            Tonya N. Jefferson
-                          </a>
+                <div class="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
+                  <a href="#" class="txt34 dis-block p-b-6">
+                    Aaron Masuba
+                  </a>
 
-                          <span class="dis-block t-center txt35 p-b-25">
-                            Communicator
-                          </span>
+                  <span class="dis-block t-center txt35 p-b-25">QR Code</span>
 
-                          <span class="dis-block t-center txt36 p-b-25">
-                            USA
-                          </span>
+                  <span class="dis-block t-center txt36 p-b-25">
+                    Bangladesh
+                  </span>
 
-                          <p class="t-center">
-                            CEO, Transnational Imports & Exports, LLC
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <p class="t-center">Engineering student (EEE)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
+              <div class="blo5 pos-relative p-t-60">
+                <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
+                  <a href="#">
+                    <img src={TMember5} alt="IGM-AVATAR" />
+                  </a>
+                </div>
+
+                <div class="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
+                  <a href="#" class="txt34 dis-block p-b-6">
+                    Tonya N. Jefferson
+                  </a>
+
+                  <span class="dis-block t-center txt35 p-b-25">
+                    Communicator
+                  </span>
+
+                  <span class="dis-block t-center txt36 p-b-25">USA</span>
+
+                  <p class="t-center">
+                    CEO, Transnational Imports & Exports, LLC
+                  </p>
                 </div>
               </div>
             </div>
