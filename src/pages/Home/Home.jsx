@@ -22,11 +22,11 @@ const Home = () => {
       <SupportSection />
       <PricingSection />
       <section id="aa-banner">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="aa-banner-area">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="row">
+                <div className="aa-banner-area">
                   <a href="#">
                     <img src={BannerImg} alt="banner img" />
                   </a>

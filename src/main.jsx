@@ -10,11 +10,11 @@ import "./index.css";
 
 // redux
 import { Provider } from "react-redux";
-import Store from "./redux/store";
+import store from "./redux/store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={Store}>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

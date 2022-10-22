@@ -2,11 +2,11 @@ import Image from "../../../assets/img/icons/homepage1.jpg";
 
 const AboutSection = () => {
   return (
-    <div id="about" class="about pt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-5 col-lg-5 col-md-5 col-sm-l2">
-            <div class="about_box">
+    <div id="about" className="about pt-5">
+      <div className="container">
+        <div className="row">
+          <div className="col-xl-5 col-lg-5 col-md-5 col-sm-l2">
+            <div className="about_box">
               <h2>About Quagrifresh</h2>
               <p>
                 dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -20,8 +20,8 @@ const AboutSection = () => {
               <a href="#">Read More</a>
             </div>
           </div>
-          <div class="col-xl-7 col-lg-7 col-md-7 col-sm-l2">
-            <div class="about_img">
+          <div className="col-xl-7 col-lg-7 col-md-7 col-sm-l2">
+            <div className="about_img">
               <figure>
                 <img src={Image} alt="img" />
               </figure>

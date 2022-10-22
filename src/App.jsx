@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { Header, Nav, Footer } from "./components";
-import { About, Home } from "./pages";
+import { About, Home, Product, Products } from "./pages";
 
 const App = () => {
   return (
@@ -16,7 +16,8 @@ const App = () => {
         <Route path="/account" element={<h1>Account</h1>} />
         <Route path="/wishlist" element={<h1>Wishlist</h1>} />
 
-        <Route path="/products" element={<h1>Products</h1>} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/product/:productId" element={<Product />} />
         <Route path="/events" element={<h1>Events</h1>} />
 
         <Route path="/cart" element={<h1>Cart</h1>} />

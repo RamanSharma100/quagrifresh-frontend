@@ -13,43 +13,43 @@ const Promo = () => {
   return (
     <>
       <section id="aa-promo">
-        <div class="container px-5">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="aa-promo-area">
-                <div class="row">
-                  <div class="col-md-5 p-0">
-                    <div class="aa-promo-left ">
-                      <div class="aa-promo-banner">
+        <div className="container px-5">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="aa-promo-area">
+                <div className="row">
+                  <div className="col-md-5 p-0">
+                    <div className="aa-promo-left ">
+                      <div className="aa-promo-banner">
                         <img src={Image1} alt="img" />
-                        <div class="aa-prom-content"></div>
+                        <div className="aa-prom-content"></div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-7 p-0">
-                    <div class="aa-promo-right">
-                      <div class="aa-single-promo-right">
-                        <div class="aa-promo-banner">
+                  <div className="col-md-7 p-0">
+                    <div className="aa-promo-right">
+                      <div className="aa-single-promo-right">
+                        <div className="aa-promo-banner">
                           <img src={Image7} alt="img" />
-                          <div class="aa-prom-content"></div>
+                          <div className="aa-prom-content"></div>
                         </div>
                       </div>
-                      <div class="aa-single-promo-right">
-                        <div class="aa-promo-banner">
+                      <div className="aa-single-promo-right">
+                        <div className="aa-promo-banner">
                           <img src={Image2} alt="img" />
-                          <div class="aa-prom-content"></div>
+                          <div className="aa-prom-content"></div>
                         </div>
                       </div>
-                      <div class="aa-single-promo-right">
-                        <div class="aa-promo-banner">
+                      <div className="aa-single-promo-right">
+                        <div className="aa-promo-banner">
                           <img src={Image3} alt="img" />
-                          <div class="aa-prom-content"></div>
+                          <div className="aa-prom-content"></div>
                         </div>
                       </div>
-                      <div class="aa-single-promo-right">
-                        <div class="aa-promo-banner">
+                      <div className="aa-single-promo-right">
+                        <div className="aa-promo-banner">
                           <img src={Image4} alt="img" />
-                          <div class="aa-prom-content"></div>
+                          <div className="aa-prom-content"></div>
                         </div>
                       </div>
                     </div>
@@ -60,11 +60,11 @@ const Promo = () => {
           </div>
         </div>
       </section>
-      <div class="for_box_bg">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-3 co-sm-l2">
-              <div class="for_box">
+      <div className="for_box_bg">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-3 col-lg-3 col-md-3 co-sm-l2">
+              <div className="for_box">
                 <i>
                   <img src={Icon1} alt="#" />
                 </i>
@@ -72,8 +72,8 @@ const Promo = () => {
                 <h3>Harvests</h3>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 co-sm-l2">
-              <div class="for_box">
+            <div className="col-xl-3 col-lg-3 col-md-3 co-sm-l2">
+              <div className="for_box">
                 <i>
                   <img src={Icon2} alt="#" />
                 </i>
@@ -81,8 +81,8 @@ const Promo = () => {
                 <h3>Units of Cattle</h3>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 co-sm-l2">
-              <div class="for_box">
+            <div className="col-xl-3 col-lg-3 col-md-3 co-sm-l2">
+              <div className="for_box">
                 <i>
                   <img src={Icon3} alt="#" />
                 </i>
@@ -90,8 +90,8 @@ const Promo = () => {
                 <h3>Farm</h3>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 co-sm-l2">
-              <div class="for_box">
+            <div className="col-xl-3 col-lg-3 col-md-3 co-sm-l2">
+              <div className="for_box">
                 <i>
                   <img src={Icon4} alt="#" />
                 </i>
