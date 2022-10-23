@@ -8,14 +8,14 @@ const initialState = {
 
 const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case types.LOGIN_SUCCESS:
+    case types.LOGIN:
       return {
         ...state,
         user: payload.user,
         token: payload.token,
         isAuthenticated: true,
       };
-    case types.LOGOUT_SUCCESS:
+    case types.LOGOUT:
       return {
         ...state,
         user: null,

@@ -1,14 +1,28 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import "./App.css";
 import { Header, Nav, Footer } from "./components";
-import { About, Home, Product, Products } from "./pages";
+import {
+  About,
+  Home,
+  Product,
+  Products,
+  _404,
+  Login,
+  Register,
+  Dashboard,
+} from "./pages";
 
 const App = () => {
+  const location = useLocation();
+  const show = !location.pathname.includes("dashboard");
+
   return (
     <div className="App">
-      <Header />
-      <Nav />
+      <ToastContainer />
+      {show && <Header />}
+      {show && <Nav />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -23,16 +37,18 @@ const App = () => {
         <Route path="/cart" element={<h1>Cart</h1>} />
         <Route path="/checkout" element={<h1>Checkout</h1>} />
 
-        <Route path="/login" element={<h1>Login</h1>} />
-        <Route path="/register" element={<h1>Register</h1>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
         <Route path="/membership" element={<h1>Membership</h1>} />
 
         <Route path="/contact" element={<h1>Contact</h1>} />
 
-        <Route path="*" element={<h1>404 Not Found</h1>} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="*" element={<_404 />} />
       </Routes>
-      <Footer />
+      {show && <Footer />}
     </div>
   );
 };
