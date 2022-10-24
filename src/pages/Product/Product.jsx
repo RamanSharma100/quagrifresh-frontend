@@ -63,24 +63,27 @@ const Product = () => {
         </div>
       </section>
       <section id="aa-product-details">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="aa-product-details-area">
-                <div class="aa-product-details-content">
-                  <div class="row">
-                    <div class="col-md-5 col-sm-5 col-xs-12">
-                      <div class="aa-product-view-slider">
-                        <div id="demo-1" class="simpleLens-gallery-container">
-                          <div class="simpleLens-container">
-                            <div class="simpleLens-big-image-container">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="aa-product-details-area">
+                <div className="aa-product-details-content">
+                  <div className="row">
+                    <div className="col-md-5 col-sm-5 col-xs-12">
+                      <div className="aa-product-view-slider">
+                        <div
+                          id="demo-1"
+                          className="simpleLens-gallery-container"
+                        >
+                          <div className="simpleLens-container">
+                            <div className="simpleLens-big-image-container">
                               <a
                                 data-lens-image=""
-                                class="simpleLens-lens-image"
+                                className="simpleLens-lens-image"
                               >
                                 <img
                                   src={product.doc.images[0].secure_url}
-                                  class="simpleLens-big-image w-100 h-100"
+                                  className="simpleLens-big-image w-100 h-100"
                                 />
                               </a>
                             </div>
@@ -88,12 +91,12 @@ const Product = () => {
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-7 col-sm-7 col-xs-12">
-                      <div class="aa-product-view-content">
+                    <div className="col-md-7 col-sm-7 col-xs-12">
+                      <div className="aa-product-view-content">
                         <h3>Fruits</h3>
-                        <div class="aa-price-block">
-                          <span class="aa-product-view-price">$34.99</span>
-                          <p class="aa-product-avilability">
+                        <div className="aa-price-block">
+                          <span className="aa-product-view-price">$34.99</span>
+                          <p className="aa-product-avilability">
                             Avilability:{" "}
                             <span>
                               {product.doc.inStock ? "In Stock" : "Sold Out"}
@@ -103,18 +106,18 @@ const Product = () => {
                         <p>{product.doc.description.slice(0, 201)} ...</p>
 
                         <h4>Color</h4>
-                        <div class="aa-color-tag">
+                        <div className="aa-color-tag">
                           {JSON.parse(product.doc.colors).map(
                             (color, index) => (
                               <a
                                 key={index * 636}
                                 href="#"
-                                class={`aa-color-${color}`}
+                                className={`aa-color-${color}`}
                               ></a>
                             )
                           )}
                         </div>
-                        <div class="aa-prod-quantity">
+                        <div className="aa-prod-quantity">
                           <form action="">
                             <select id="" name="">
                               <option selected="1" value="0">
@@ -127,21 +130,21 @@ const Product = () => {
                               <option value="5">6</option>
                             </select>
                           </form>
-                          <p class="aa-prod-category text-capitalize">
+                          <p className="aa-prod-category text-capitalize">
                             Category:{" "}
                             <a href="#">
                               {JSON.parse(product.doc.category).join(", ")}
                             </a>
                           </p>
                         </div>
-                        <div class="aa-prod-view-bottom">
-                          <a class="aa-add-to-cart-btn" href="#">
+                        <div className="aa-prod-view-bottom">
+                          <a className="aa-add-to-cart-btn" href="#">
                             Add To Cart
                           </a>
-                          <a class="aa-add-to-cart-btn" href="#">
+                          <a className="aa-add-to-cart-btn" href="#">
                             Wishlist
                           </a>
-                          <a class="aa-add-to-cart-btn" href="#">
+                          <a className="aa-add-to-cart-btn" href="#">
                             Compare
                           </a>
                         </div>
@@ -149,15 +152,15 @@ const Product = () => {
                     </div>
                   </div>
                 </div>
-                <div class="aa-product-details-bottom">
+                <div className="aa-product-details-bottom">
                   <ul
-                    class="nav nav-pills py-3 mb-3"
+                    className="nav nav-pills py-3 mb-3"
                     id="pills-tab"
                     role="tablist"
                   >
-                    <li class="nav-item" role="presentation">
+                    <li className="nav-item" role="presentation">
                       <button
-                        class="nav-link active"
+                        className="nav-link active"
                         id="pills-home-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-home"
@@ -169,9 +172,9 @@ const Product = () => {
                         Description
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li className="nav-item" role="presentation">
                       <button
-                        class="nav-link"
+                        className="nav-link"
                         id="pills-profile-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-profile"
@@ -184,9 +187,9 @@ const Product = () => {
                       </button>
                     </li>
                   </ul>
-                  <div class="tab-content" id="pills-tabContent">
+                  <div className="tab-content" id="pills-tabContent">
                     <div
-                      class="tab-pane fade show active"
+                      className="tab-pane fade show active"
                       id="pills-home"
                       role="tabpanel"
                       aria-labelledby="pills-home-tab"
@@ -194,32 +197,32 @@ const Product = () => {
                       {product.doc.description}
                     </div>
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="pills-profile"
                       role="tabpanel"
                       aria-labelledby="pills-profile-tab"
                     >
-                      <div class="aa-product-review-area">
+                      <div className="aa-product-review-area">
                         <h4>2 Reviews for Fruit</h4>
-                        <ul class="aa-review-nav">
+                        <ul className="aa-review-nav">
                           <li>
-                            <div class="media">
-                              <div class="media-left">
+                            <div className="media">
+                              <div className="media-left">
                                 <a href="#">
-                                  <img class="media-object" src="" alt="" />
+                                  <img className="media-object" src="" alt="" />
                                 </a>
                               </div>
-                              <div class="media-body">
-                                <h4 class="media-heading">
+                              <div className="media-body">
+                                <h4 className="media-heading">
                                   <strong>Tanjo</strong> -{" "}
                                   <span>July 25, 2022</span>
                                 </h4>
-                                <div class="aa-product-rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star-o"></span>
+                                <div className="aa-product-rating">
+                                  <span className="fa fa-star"></span>
+                                  <span className="fa fa-star"></span>
+                                  <span className="fa fa-star"></span>
+                                  <span className="fa fa-star"></span>
+                                  <span className="fa fa-star-o"></span>
                                 </div>
                                 <p>
                                   Lorem ipsum dolor sit amet, consectetur
@@ -229,23 +232,23 @@ const Product = () => {
                             </div>
                           </li>
                           <li>
-                            <div class="media">
-                              <div class="media-left">
+                            <div className="media">
+                              <div className="media-left">
                                 <a href="#">
-                                  <img class="media-object" src="" alt="" />
+                                  <img className="media-object" src="" alt="" />
                                 </a>
                               </div>
-                              <div class="media-body">
-                                <h4 class="media-heading">
+                              <div className="media-body">
+                                <h4 className="media-heading">
                                   <strong>Marla Jobs</strong> -{" "}
                                   <span>March 26, 2016</span>
                                 </h4>
-                                <div class="aa-product-rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star-o"></span>
+                                <div className="aa-product-rating">
+                                  <span className="fa fa-star"></span>
+                                  <span className="fa fa-star"></span>
+                                  <span className="fa fa-star"></span>
+                                  <span className="fa fa-star"></span>
+                                  <span className="fa fa-star-o"></span>
                                 </div>
                                 <p>
                                   Lorem ipsum dolor sit amet, consectetur
@@ -256,47 +259,47 @@ const Product = () => {
                           </li>
                         </ul>
                         <h4>Add a review</h4>
-                        <div class="aa-your-rating">
+                        <div className="aa-your-rating">
                           <p>Your Rating</p>
                           <a href="#">
-                            <span class="fa fa-star-o"></span>
+                            <span className="fa fa-star-o"></span>
                           </a>
                           <a href="#">
-                            <span class="fa fa-star-o"></span>
+                            <span className="fa fa-star-o"></span>
                           </a>
                           <a href="#">
-                            <span class="fa fa-star-o"></span>
+                            <span className="fa fa-star-o"></span>
                           </a>
                           <a href="#">
-                            <span class="fa fa-star-o"></span>
+                            <span className="fa fa-star-o"></span>
                           </a>
                           <a href="#">
-                            <span class="fa fa-star-o"></span>
+                            <span className="fa fa-star-o"></span>
                           </a>
                         </div>
-                        <form action="" class="aa-review-form">
-                          <div class="form-group">
-                            <label for="message">Your Review</label>
+                        <form action="" className="aa-review-form">
+                          <div className="form-group">
+                            <label htmlFor="message">Your Review</label>
                             <textarea
-                              class="form-control"
+                              className="form-control"
                               rows="3"
                               id="message"
                             ></textarea>
                           </div>
-                          <div class="form-group">
-                            <label for="name">Name</label>
+                          <div className="form-group">
+                            <label htmlFor="name">Name</label>
                             <input
                               type="text"
-                              class="form-control"
+                              className="form-control"
                               id="name"
                               placeholder="Name"
                             />
                           </div>
-                          <div class="form-group">
-                            <label for="email">Email</label>
+                          <div className="form-group">
+                            <label htmlFor="email">Email</label>
                             <input
                               type="email"
-                              class="form-control"
+                              className="form-control"
                               id="email"
                               placeholder="example@gmail.com"
                             />
@@ -304,7 +307,7 @@ const Product = () => {
 
                           <button
                             type="submit"
-                            class="btn btn-default aa-review-submit"
+                            className="btn btn-default aa-review-submit"
                           >
                             Submit
                           </button>

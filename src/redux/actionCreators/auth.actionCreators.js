@@ -3,12 +3,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 // actions
-const login = (payload) => ({
+export const login = (payload) => ({
   type: types.LOGIN,
   payload,
 });
 
-const logout = () => ({
+export const logout = () => ({
   type: types.LOGOUT,
 });
 
@@ -31,6 +31,8 @@ export const loginUser = (data, setSuccess) => (dispatch) => {
     .post(`${endPoint}/api/auth/login`, data)
     .then((res) => {
       dispatch(login({ user: res.data.user, token: res.data.token }));
+      // set token to local storage
+      localStorage.setItem("quagri_tkn", JSON.stringify(res.data.token));
       toast.success(res.data.msg);
       setSuccess(true);
     })

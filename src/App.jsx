@@ -1,5 +1,8 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import jwtDecode from "jwt-decode";
 
 import "./App.css";
 import { Header, Nav, Footer } from "./components";
@@ -13,10 +16,35 @@ import {
   Register,
   Dashboard,
 } from "./pages";
+import { login, logout } from "./redux/actionCreators/auth.actionCreators";
 
 const App = () => {
   const location = useLocation();
   const show = !location.pathname.includes("dashboard");
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!window.location.pathname.includes("dashboard")) {
+      // check token and redirect to login if not present
+      const token = localStorage.getItem("quagri_tkn");
+
+      if (!token) {
+        dispatch(logout());
+        console.log("no token");
+      } else {
+        const decodedToken = jwtDecode(JSON.parse(token));
+
+        if (decodedToken.exp * 1000 < new Date().getTime()) {
+          dispatch(logout());
+          console.log("token expired");
+        } else {
+          dispatch(login({ token, user: decodedToken }));
+          console.log("token present");
+        }
+      }
+    }
+  }, []);
 
   return (
     <div className="App">

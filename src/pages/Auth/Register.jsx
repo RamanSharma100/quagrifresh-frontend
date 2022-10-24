@@ -51,7 +51,7 @@ const Register = () => {
           <div className="col-md-6 mx-auto">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label for="name" className="form-label">
+                <label htmlFor="name" className="form-label">
                   Full Name
                 </label>
                 <input
@@ -64,7 +64,7 @@ const Register = () => {
                 />
               </div>
               <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label">
+                <label htmlFor="exampleInputEmail1" className="form-label">
                   Email
                 </label>
                 <input
@@ -77,7 +77,7 @@ const Register = () => {
                 />
               </div>
               <div className="mb-3">
-                <label for="exampleInputPassword1" className="form-label">
+                <label htmlFor="exampleInputPassword1" className="form-label">
                   Password
                 </label>
                 <input
@@ -89,7 +89,7 @@ const Register = () => {
                 />
               </div>
               <div className="mb-3">
-                <label for="confirmPass" className="form-label">
+                <label htmlFor="confirmPass" className="form-label">
                   Re-type Password
                 </label>
                 <input
@@ -101,7 +101,7 @@ const Register = () => {
                 />
               </div>
               <div className="mb-3">
-                <label for="join-as" className="form-label">
+                <label htmlFor="join-as" className="form-label">
                   Join as
                 </label>
                 <select

@@ -42,16 +42,16 @@ const Products = () => {
             <h2 className="tit6 t-center">Products</h2>
           </section>
           <section id="aa-product-category">
-            <div class="container">
-              <div class="row">
+            <div className="container">
+              <div className="row">
                 {/* sidebar  */}
                 <SideBar />
-                <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
-                  <div class="aa-product-catg-content">
-                    <div class="aa-product-catg-head">
-                      <div class="aa-product-catg-head-left">
-                        <form action="" class="aa-sort-form">
-                          <label for="">Sort by</label>
+                <div className="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
+                  <div className="aa-product-catg-content">
+                    <div className="aa-product-catg-head">
+                      <div className="aa-product-catg-head-left">
+                        <form action="" className="aa-sort-form">
+                          <label htmlFor="">Sort by</label>
                           <select name="">
                             <option value="1" selected="Default">
                               Default
@@ -61,8 +61,8 @@ const Products = () => {
                             <option value="4">Date</option>
                           </select>
                         </form>
-                        <form action="" class="aa-show-form">
-                          <label for="">Show</label>
+                        <form action="" className="aa-show-form">
+                          <label htmlFor="">Show</label>
                           <select name="">
                             <option value="1" selected="12">
                               12
@@ -72,64 +72,64 @@ const Products = () => {
                           </select>
                         </form>
                       </div>
-                      <div class="aa-product-catg-head-right">
+                      <div className="aa-product-catg-head-right">
                         <a id="grid-catg" href="#">
-                          <span class="fa fa-th"></span>
+                          <span className="fa fa-th"></span>
                         </a>
                         <a id="list-catg" href="#">
-                          <span class="fa fa-list"></span>
+                          <span className="fa fa-list"></span>
                         </a>
                       </div>
                     </div>
-                    <div class="aa-product-catg-body">
-                      <ul class="aa-product-catg">
+                    <div className="aa-product-catg-body">
+                      <ul className="aa-product-catg">
                         <ProductsList />
                       </ul>
                       {/* view model                   */}
                       <div
-                        class="modal fade"
+                        className="modal fade"
                         id="quick-view-modal"
                         tabindex="-1"
                         role="dialog"
                         aria-labelledby="myModalLabel"
                         aria-hidden="true"
                       >
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-body">
+                        <div className="modal-dialog">
+                          <div className="modal-content">
+                            <div className="modal-body">
                               <button
                                 type="button"
-                                class="close"
+                                className="close"
                                 data-dismiss="modal"
                                 aria-hidden="true"
                               >
                                 &times;
                               </button>
-                              <div class="row">
+                              <div className="row">
                                 {/* modal view slider  */}
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <div class="aa-product-view-slider">
+                                <div className="col-md-6 col-sm-6 col-xs-12">
+                                  <div className="aa-product-view-slider">
                                     <div
-                                      class="simpleLens-gallery-container"
+                                      className="simpleLens-gallery-container"
                                       id="demo-1"
                                     >
-                                      <div class="simpleLens-container">
-                                        <div class="simpleLens-big-image-container">
+                                      <div className="simpleLens-container">
+                                        <div className="simpleLens-big-image-container">
                                           <a
-                                            class="simpleLens-lens-image"
+                                            className="simpleLens-lens-image"
                                             data-lens-image="img/view-slider/large/polo-shirt-1.png"
                                           >
                                             <img
                                               src=""
-                                              class="simpleLens-big-image"
+                                              className="simpleLens-big-image"
                                             />
                                           </a>
                                         </div>
                                       </div>
-                                      <div class="simpleLens-thumbnails-container">
+                                      <div className="simpleLens-thumbnails-container">
                                         <a
                                           href="#"
-                                          class="simpleLens-thumbnail-wrapper"
+                                          className="simpleLens-thumbnail-wrapper"
                                           data-lens-image=""
                                           data-big-image=""
                                         >
@@ -137,7 +137,7 @@ const Products = () => {
                                         </a>
                                         <a
                                           href="#"
-                                          class="simpleLens-thumbnail-wrapper"
+                                          className="simpleLens-thumbnail-wrapper"
                                           data-lens-image=""
                                           data-big-image=""
                                         >
@@ -146,7 +146,7 @@ const Products = () => {
 
                                         <a
                                           href="#"
-                                          class="simpleLens-thumbnail-wrapper"
+                                          className="simpleLens-thumbnail-wrapper"
                                           data-lens-image=""
                                           data-big-image=""
                                         >
@@ -157,14 +157,14 @@ const Products = () => {
                                   </div>
                                 </div>
                                 {/* modal view content  */}
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <div class="aa-product-view-content">
+                                <div className="col-md-6 col-sm-6 col-xs-12">
+                                  <div className="aa-product-view-content">
                                     <h3>T-Shirt</h3>
-                                    <div class="aa-price-block">
-                                      <span class="aa-product-view-price">
+                                    <div className="aa-price-block">
+                                      <span className="aa-product-view-price">
                                         $34.99
                                       </span>
-                                      <p class="aa-product-avilability">
+                                      <p className="aa-product-avilability">
                                         Avilability: <span>In stock</span>
                                       </p>
                                     </div>
@@ -175,7 +175,7 @@ const Products = () => {
                                       porro quidem, itaque quis quaerat!
                                     </p>
 
-                                    <div class="aa-prod-quantity">
+                                    <div className="aa-prod-quantity">
                                       <form action="">
                                         <select name="" id="">
                                           <option value="0" selected="1">
@@ -188,16 +188,22 @@ const Products = () => {
                                           <option value="5">6</option>
                                         </select>
                                       </form>
-                                      <p class="aa-prod-category">
+                                      <p className="aa-prod-category">
                                         Category: <a href="#">Fruits</a>
                                       </p>
                                     </div>
-                                    <div class="aa-prod-view-bottom">
-                                      <a href="#" class="aa-add-to-cart-btn">
-                                        <span class="fa fa-shopping-cart"></span>
+                                    <div className="aa-prod-view-bottom">
+                                      <a
+                                        href="#"
+                                        className="aa-add-to-cart-btn"
+                                      >
+                                        <span className="fa fa-shopping-cart"></span>
                                         Add To Cart
                                       </a>
-                                      <a href="#" class="aa-add-to-cart-btn">
+                                      <a
+                                        href="#"
+                                        className="aa-add-to-cart-btn"
+                                      >
                                         View Details
                                       </a>
                                     </div>
@@ -210,9 +216,9 @@ const Products = () => {
                       </div>
                     </div>
                     {/* pagination  */}
-                    <div class="aa-product-catg-pagination">
+                    <div className="aa-product-catg-pagination">
                       <nav>
-                        <ul class="pagination">
+                        <ul className="pagination">
                           <li>
                             <a href="#" aria-label="Previous">
                               <span aria-hidden="true">&laquo;</span>

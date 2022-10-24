@@ -1,12 +1,12 @@
 const SideBar = () => {
   return (
-    <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9 mt-3">
-      <aside class="aa-sidebar">
+    <div className="col-lg-3 col-md-3 col-sm-4 col-md-pull-9 mt-3">
+      <aside className="aa-sidebar">
         {/* sdiebar widged  */}
 
-        <div class="aa-sidebar-widget">
+        <div className="aa-sidebar-widget">
           <h3 className="py-3">Category</h3>
-          <ul class="aa-catg-nav">
+          <ul className="aa-catg-nav">
             <li>
               <a href="#">Fruits</a>
             </li>
@@ -26,9 +26,9 @@ const SideBar = () => {
         </div>
         {/* sdiebar widged  */}
 
-        <div class="aa-sidebar-widget mt-4">
+        <div className="aa-sidebar-widget mt-4">
           <h3>Tags</h3>
-          <div class="tag-cloud">
+          <div className="tag-cloud">
             <a href="#">Wine</a>
             <a href="#">Ecommerce</a>
             <a href="#">Shop</a>
@@ -40,22 +40,22 @@ const SideBar = () => {
         </div>
         {/* sdiebar widged  */}
 
-        <div class="aa-sidebar-widget mt-4">
+        <div className="aa-sidebar-widget mt-4">
           <h3>Shop By Price</h3>
 
-          <div class="aa-sidebar-price-range">
+          <div className="aa-sidebar-price-range">
             <form action="">
               <div
                 id="skipstep"
-                class="noUi-target noUi-ltr noUi-horizontal noUi-background"
+                className="noUi-target noUi-ltr noUi-horizontal noUi-background"
               ></div>
-              <span id="skip-value-lower" class="example-val">
+              <span id="skip-value-lower" className="example-val">
                 30.00
               </span>
-              <span id="skip-value-upper" class="example-val">
+              <span id="skip-value-upper" className="example-val">
                 100.00
               </span>
-              <button class="aa-filter-btn" type="submit">
+              <button className="aa-filter-btn" type="submit">
                 Filter
               </button>
             </form>
@@ -63,33 +63,33 @@ const SideBar = () => {
         </div>
         {/* sdiebar widged  */}
 
-        <div class="aa-sidebar-widget mt-4">
+        <div className="aa-sidebar-widget mt-4">
           <h3>Shop By Color</h3>
-          <div class="aa-color-tag">
-            <a class="aa-color-green" href="#"></a>
-            <a class="aa-color-yellow" href="#"></a>
-            <a class="aa-color-pink" href="#"></a>
-            <a class="aa-color-purple" href="#"></a>
-            <a class="aa-color-blue" href="#"></a>
-            <a class="aa-color-orange" href="#"></a>
-            <a class="aa-color-gray" href="#"></a>
-            <a class="aa-color-black" href="#"></a>
-            <a class="aa-color-white" href="#"></a>
-            <a class="aa-color-cyan" href="#"></a>
-            <a class="aa-color-olive" href="#"></a>
-            <a class="aa-color-orchid" href="#"></a>
+          <div className="aa-color-tag">
+            <a className="aa-color-green" href="#"></a>
+            <a className="aa-color-yellow" href="#"></a>
+            <a className="aa-color-pink" href="#"></a>
+            <a className="aa-color-purple" href="#"></a>
+            <a className="aa-color-blue" href="#"></a>
+            <a className="aa-color-orange" href="#"></a>
+            <a className="aa-color-gray" href="#"></a>
+            <a className="aa-color-black" href="#"></a>
+            <a className="aa-color-white" href="#"></a>
+            <a className="aa-color-cyan" href="#"></a>
+            <a className="aa-color-olive" href="#"></a>
+            <a className="aa-color-orchid" href="#"></a>
           </div>
         </div>
         {/* sdiebar widged  */}
-        {/* <div class="aa-sidebar-widget">
+        {/* <div className="aa-sidebar-widget">
           <h3>Recently Views</h3>
-          <div class="aa-recently-views">
+          <div className="aa-recently-views">
             <ul>
               <li>
-                <a href="#" class="aa-cartbox-img">
+                <a href="#" className="aa-cartbox-img">
                   <img alt="img" src="img/products/product-img-3.jpg" />
                 </a>
-                <div class="aa-cartbox-info">
+                <div className="aa-cartbox-info">
                   <h4>
                     <a href="#">Product Name</a>
                   </h4>
@@ -97,10 +97,10 @@ const SideBar = () => {
                 </div>
               </li>
               <li>
-                <a href="#" class="aa-cartbox-img">
+                <a href="#" className="aa-cartbox-img">
                   <img alt="img" src="img/products/product-img-2.jpg" />
                 </a>
-                <div class="aa-cartbox-info">
+                <div className="aa-cartbox-info">
                   <h4>
                     <a href="#">Product Name</a>
                   </h4>
@@ -108,10 +108,10 @@ const SideBar = () => {
                 </div>
               </li>
               <li>
-                <a href="#" class="aa-cartbox-img">
+                <a href="#" className="aa-cartbox-img">
                   <img alt="img" src="img/products/product-img-1.jpg" />
                 </a>
-                <div class="aa-cartbox-info">
+                <div className="aa-cartbox-info">
                   <h4>
                     <a href="#">Product Name</a>
                   </h4>
@@ -122,15 +122,15 @@ const SideBar = () => {
           </div>
         </div> */}
         {/* sdiebar widged  */}
-        {/* <div class="aa-sidebar-widget">
+        {/* <div className="aa-sidebar-widget">
           <h3>Top Rated Products</h3>
-          <div class="aa-recently-views">
+          <div className="aa-recently-views">
             <ul>
               <li>
-                <a href="#" class="aa-cartbox-img">
+                <a href="#" className="aa-cartbox-img">
                   <img alt="img" src="img/products/product-img-6.jpg" />
                 </a>
-                <div class="aa-cartbox-info">
+                <div className="aa-cartbox-info">
                   <h4>
                     <a href="#">Product Name</a>
                   </h4>
@@ -138,10 +138,10 @@ const SideBar = () => {
                 </div>
               </li>
               <li>
-                <a href="#" class="aa-cartbox-img">
+                <a href="#" className="aa-cartbox-img">
                   <img alt="img" src="img/products/product-img-5.jpg" />
                 </a>
-                <div class="aa-cartbox-info">
+                <div className="aa-cartbox-info">
                   <h4>
                     <a href="#">Product Name</a>
                   </h4>
@@ -149,10 +149,10 @@ const SideBar = () => {
                 </div>
               </li>
               <li>
-                <a href="#" class="aa-cartbox-img">
+                <a href="#" className="aa-cartbox-img">
                   <img alt="img" src="img/products/product-img-4.jpg" />
                 </a>
-                <div class="aa-cartbox-info">
+                <div className="aa-cartbox-info">
                   <h4>
                     <a href="#">Product Name</a>
                   </h4>

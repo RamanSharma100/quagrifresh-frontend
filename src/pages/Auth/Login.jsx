@@ -40,32 +40,35 @@ const Login = () => {
           <h1 className="tit2 text-center my-5">Login Here</h1>
           <div className="col-md-6 mx-auto">
             <form onSubmit={handleSubmit}>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
+              <div className="mb-3">
+                <label htmlFor="exampleInputEmail1" className="form-label">
                   Email
                 </label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                 />
               </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
+              <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">
                   Password
                 </label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputPassword1"
                 />
               </div>
-              <button type="submit" class="btn form-control mt-5 btn-success">
+              <button
+                type="submit"
+                className="btn form-control mt-5 btn-success"
+              >
                 Submit
               </button>
             </form>
