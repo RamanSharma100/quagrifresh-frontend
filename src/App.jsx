@@ -15,6 +15,8 @@ import {
   Login,
   Register,
   Dashboard,
+  ForgotPassword,
+  ResetPassword,
 } from "./pages";
 import { login, logout } from "./redux/actionCreators/auth.actionCreators";
 
@@ -67,6 +69,8 @@ const App = () => {
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/resetpassword/:token" element={<ResetPassword />} />
 
         <Route path="/membership" element={<h1>Membership</h1>} />
 

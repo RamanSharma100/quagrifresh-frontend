@@ -40,3 +40,27 @@ export const loginUser = (data, setSuccess) => (dispatch) => {
       toast.error(err.response.data.msg);
     });
 };
+
+export const sendResetPasswordEmail = (data, setSuccess) => (dispatch) => {
+  axios
+    .post(`${endPoint}/api/email/resetPassword`, data)
+    .then((res) => {
+      toast.success(res.data.msg);
+      setSuccess(true);
+    })
+    .catch((err) => {
+      toast.error(err.response.data.msg);
+    });
+};
+
+export const resetPassword = (data, token, setSuccess) => (dispatch) => {
+  axios
+    .post(`${endPoint}/api/auth/reset-password/${token}`, data)
+    .then((res) => {
+      toast.success(res.data.msg);
+      setSuccess(true);
+    })
+    .catch((err) => {
+      toast.error(err.response.data.msg);
+    });
+};
