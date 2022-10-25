@@ -1,17 +1,20 @@
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { SideBar } from "../../components/DashoardComponents";
 import { login, logout } from "../../redux/actionCreators/auth.actionCreators";
 
 import "./Dashboard.css";
+import DashboardCreateProduct from "./DashboardCreateProduct/DashboardCreateProduct";
 import DashboardHome from "./DashboardHome/DashboardHome";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const isLoggedin = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
     // check token and redirect to login if not present
@@ -36,10 +39,20 @@ const Dashboard = () => {
     }
   }, [dispatch]);
 
+  if (!isLoggedin) {
+    return (
+      <h1 className="text-danger my-5 text-center">
+        You are not allowed to access this page!, Please login first!
+      </h1>
+    );
+  }
   return (
     <>
       <SideBar />
-      <DashboardHome />
+      <Routes>
+        <Route path="/" element={<DashboardHome />} />
+        <Route path="/create/product" element={<DashboardCreateProduct />} />
+      </Routes>
     </>
   );
 };

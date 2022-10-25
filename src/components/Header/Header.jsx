@@ -1,9 +1,11 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
 
-import indianFlag from "../../assets/img/flag/india.PNG";
-import americanFlag from "../../assets/img/flag/american.PNG";
+import indianFlag from "../../assets/img/flag/india.png";
+import americanFlag from "../../assets/img/flag/american.png";
 import frenchFlag from "../../assets/img/flag/french.jpg";
 import englishFlag from "../../assets/img/flag/english.jpg";
 
@@ -13,6 +15,8 @@ import frontCart2 from "../../assets/img/Frontcart/2.png";
 import Logo from "../../assets/img/logo.jpeg";
 
 const Header = () => {
+  const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
+
   return (
     <header id="aa-header">
       {/* <!-- start header top  --> */}
@@ -144,31 +148,61 @@ const Header = () => {
                 {/* <!-- / header top left --> */}
                 <div className="aa-header-top-right">
                   <ul className="aa-head-top-nav-right mb-0">
-                    <li>
-                      <Link className="text-decoration-none" to="/account">
-                        My Account
-                      </Link>
-                    </li>
-                    <li className="hidden-xs">
-                      <Link className="text-decoration-none" to="/wishlist">
-                        Wishlist
-                      </Link>
-                    </li>
-                    <li className="hidden-xs">
-                      <Link className="text-decoration-none" to="/cart">
-                        My Cart
-                      </Link>
-                    </li>
-                    <li className="hidden-xs">
-                      <Link className="text-decoration-none" to="/checkout">
-                        Checkout
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="text-decoration-none" to="/login">
-                        Login
-                      </Link>
-                    </li>
+                    {isLoggedIn ? (
+                      <>
+                        <li className="hidden-xs">
+                          <Link className="text-decoration-none" to="/cart">
+                            My Cart
+                          </Link>
+                        </li>
+                        <li className="hidden-xs">
+                          <Link className="text-decoration-none" to="/login">
+                            Login
+                          </Link>
+                        </li>
+                        <li className="hidden-xs">
+                          <Link className="text-decoration-none" to="/register">
+                            Register
+                          </Link>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li>
+                          <Link className="text-decoration-none" to="/account">
+                            My Account
+                          </Link>
+                        </li>
+                        <li className="hidden-xs">
+                          <Link className="text-decoration-none" to="/wishlist">
+                            Wishlist
+                          </Link>
+                        </li>
+                        <li className="hidden-xs">
+                          <Link className="text-decoration-none" to="/cart">
+                            My Cart
+                          </Link>
+                        </li>
+                        <li className="hidden-xs">
+                          <Link className="text-decoration-none" to="/checkout">
+                            Checkout
+                          </Link>
+                        </li>
+                        <li className="hidden-xs">
+                          <Link
+                            className="text-decoration-none"
+                            to="/dashboard"
+                          >
+                            Dashboard
+                          </Link>
+                        </li>
+                        <li>
+                          <a role={"button"} className="text-decoration-none">
+                            Logout
+                          </a>
+                        </li>
+                      </>
+                    )}
                   </ul>
                 </div>
               </div>
