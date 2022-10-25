@@ -22,7 +22,7 @@ const ResetPassword = () => {
       password,
     };
 
-    dispatch(resetPassword(data, setSuccess));
+    dispatch(resetPassword(data, token, setSuccess));
   };
 
   useEffect(() => {
