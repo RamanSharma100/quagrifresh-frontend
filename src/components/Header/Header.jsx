@@ -148,7 +148,7 @@ const Header = () => {
                 {/* <!-- / header top left --> */}
                 <div className="aa-header-top-right">
                   <ul className="aa-head-top-nav-right mb-0">
-                    {isLoggedIn ? (
+                    {!isLoggedIn ? (
                       <>
                         <li className="hidden-xs">
                           <Link className="text-decoration-none" to="/cart">
