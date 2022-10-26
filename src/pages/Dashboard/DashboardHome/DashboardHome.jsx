@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { TopBar } from "../../../components/DashoardComponents";
 
 const DashboardHome = () => {
@@ -9,52 +9,51 @@ const DashboardHome = () => {
   return (
     <section className="home-section">
       <TopBar />
-
       <div className="home-content">
         <div className="overview-boxes">
           <div className="box">
             <div className="right-side">
               <div className="box-topic">Total Order</div>
-              <div className="number">40</div>
-              <div className="indicator">
+              <div className="number">0</div>
+              {/* <div className="indicator">
                 <i className="bx bx-up-arrow-alt"></i>
                 <span className="text">Up from yesterday</span>
-              </div>
+              </div> */}
             </div>
-            <i className="bx bx-cart-alt cart"></i>
+            <i className="bx bx-cart-alt cart my-0 ms-4"></i>
           </div>
           <div className="box">
             <div className="right-side">
               <div className="box-topic">Total Discount</div>
-              <div className="number">2507</div>
-              <div className="indicator">
+              <div className="number">0</div>
+              {/* <div className="indicator">
                 <i className="bx bx-up-arrow-alt"></i>
                 <span className="text">Up from yesterday</span>
-              </div>
+              </div> */}
             </div>
-            <i className="bx bxs-cart-add cart two"></i>
+            <i className="bx bxs-cart-add cart two my-0 ms-4"></i>
           </div>
           <div className="box">
             <div className="right-side">
               <div className="box-topic">Total Profit</div>
-              <div className="number">$12,876</div>
-              <div className="indicator">
+              <div className="number">$0</div>
+              {/* <div className="indicator">
                 <i className="bx bx-up-arrow-alt"></i>
                 <span className="text">Up from yesterday</span>
-              </div>
+              </div> */}
             </div>
-            <i className="bx bx-cart cart three"></i>
+            <i className="bx bx-cart cart three my-0 ms-4"></i>
           </div>
           <div className="box">
             <div className="right-side">
               <div className="box-topic">Total Return</div>
-              <div className="number">11,086</div>
-              <div className="indicator">
+              <div className="number">0</div>
+              {/* <div className="indicator">
                 <i className="bx bx-down-arrow-alt down"></i>
                 <span className="text">Down From Today</span>
-              </div>
+              </div> */}
             </div>
-            <i className="bx bxs-cart-download cart four"></i>
+            <i className="bx bxs-cart-download cart four my-0 ms-4"></i>
           </div>
         </div>
 

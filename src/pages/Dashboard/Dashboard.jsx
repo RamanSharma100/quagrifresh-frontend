@@ -7,8 +7,13 @@ import { SideBar } from "../../components/DashoardComponents";
 import { login, logout } from "../../redux/actionCreators/auth.actionCreators";
 
 import "./Dashboard.css";
-import DashboardCreateProduct from "./DashboardCreateProduct/DashboardCreateProduct";
+import DashboardProducts from "./DashboardProducts/DashboardProducts";
 import DashboardHome from "./DashboardHome/DashboardHome";
+import DashboardOrders from "./DashboardOrders/DashboardOrders";
+import DashboardStocks from "./DashboardStocks/DashboardStocks";
+import _404 from "../_404/_404";
+import DashboardUpdateProducts from "./DashboardUpdateProducts/DashboardUpdateProducts";
+import DashboardCreateProduct from "./DashboardCreateProduct/DashboardCreateProduct";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -34,7 +39,7 @@ const Dashboard = () => {
         navigate("/login");
         toast.warn("Your session has expired!, Please login again!");
       } else {
-        dispatch(login({ token, user: decodedToken }));
+        dispatch(login({ token: JSON.parse(token), user: decodedToken }));
       }
     }
   }, [dispatch]);
@@ -47,13 +52,22 @@ const Dashboard = () => {
     );
   }
   return (
-    <>
+    <div className="dashboard">
       <SideBar />
       <Routes>
-        <Route path="/" element={<DashboardHome />} />
-        <Route path="/create/product" element={<DashboardCreateProduct />} />
+        <Route path="" element={<DashboardHome />} />
+        <Route path="products" element={<DashboardProducts />} />
+        <Route
+          path="products/update/:id"
+          element={<DashboardUpdateProducts />}
+        />
+        <Route path="products/create" element={<DashboardCreateProduct />} />
+        <Route path="orders" element={<DashboardOrders />} />
+        <Route path="stocks" element={<DashboardStocks />} />
+
+        <Route path="*" element={<_404 />} />
       </Routes>
-    </>
+    </div>
   );
 };
 

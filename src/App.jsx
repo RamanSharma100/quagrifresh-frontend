@@ -41,7 +41,7 @@ const App = () => {
           dispatch(logout());
           console.log("token expired");
         } else {
-          dispatch(login({ token, user: decodedToken }));
+          dispatch(login({ token: JSON.parse(token), user: decodedToken }));
           console.log("token present");
         }
       }
@@ -76,7 +76,7 @@ const App = () => {
 
         <Route path="/contact" element={<h1>Contact</h1>} />
 
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
 
         <Route path="*" element={<_404 />} />
       </Routes>

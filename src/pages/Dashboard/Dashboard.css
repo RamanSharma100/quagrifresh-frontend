@@ -47,6 +47,7 @@
   position: relative;
   list-style: none;
   height: 50px;
+  overflow: hidden;
 }
 
 .sidebar .nav-links li a {
@@ -58,12 +59,10 @@
   transition: all 0.4s ease;
 }
 
-.sidebar .nav-links li a.active {
-  background: darkgreen;
-}
-
+.sidebar .nav-links li a.active,
 .sidebar .nav-links li a:hover {
-  background: darkgreen;
+  background: #fff;
+  color: darkgreen !important;
 }
 
 .sidebar .nav-links li i {
@@ -71,6 +70,13 @@
   text-align: center;
   font-size: 18px;
   color: #fff;
+}
+
+.sidebar .nav-links li a.active i,
+.sidebar .nav-links li a:hover i,
+.sidebar .nav-links li a.active .links_name,
+.sidebar .nav-links li a:hover .links_name {
+  color: darkgreen;
 }
 
 .sidebar .nav-links li a .links_name {
@@ -456,7 +462,7 @@ nav .profile-details i {
 
 @media (max-width: 700px) {
 
-  nav .sidebar-button .dashboard,
+  nav .sidebar-button .home-section,
   nav .profile-details .admin_name,
   nav .profile-details i {
     display: none;

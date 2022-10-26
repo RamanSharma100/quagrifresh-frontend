@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import { TopBar } from "../../../components/DashoardComponents";
-import { createProductAction } from "../../../redux/actionCreators/products.actionCreators";
-// import {
+import {
+  getProducts,
+  updateProductAction,
+} from "../../../redux/actionCreators/products.actionCreators";
 
-// } from "../../../redux/actionCreators/products.actionCreators";
-
-const DashboardCreateProduct = () => {
-  const { token, userId } = useSelector(
+const DashboardUpdateProducts = () => {
+  const { id } = useParams();
+  const { product, isLoading, token } = useSelector(
     (state) => ({
-      userId: state.auth.user._id,
+      product: state.products.products.find(
+        (product) =>
+          product.doc.productBy === state.auth.user._id && product.id === id
+      ),
+      isLoading: state.products.isLoading,
       token: state.auth.token,
     }),
     shallowEqual
@@ -26,42 +30,29 @@ const DashboardCreateProduct = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState([]);
   const [colors, setColors] = useState([]);
-  const [image, setImage] = useState([""]);
+  const [inStock, setInStock] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const data = {
-    //   name,
-    //   price,
-    //   stock,
-    //   description,
-    //   inStock: inStock === "true" ? true : false,
-    //   category: JSON.stringify(category),
-    //   colors: JSON.stringify(colors),
-    //   productBy: product.doc.productBy,
-    //   left: product.doc.left,
-    //   sold: product.doc.sold,
-    //   views: product.doc.views,
-    //   rating: product.doc.rating,
-    //   buyers: product.doc.buyers,
-    // };
-    // name, price, description, colors, category, stock, productBy;
+    const data = {
+      name,
+      price,
+      stock,
+      description,
+      inStock: inStock === "true" ? true : false,
+      category: JSON.stringify(category),
+      colors: JSON.stringify(colors),
+      productBy: product.doc.productBy,
+      left: product.doc.left,
+      sold: product.doc.sold,
+      views: product.doc.views,
+      rating: product.doc.rating,
+      buyers: product.doc.buyers,
+    };
 
-    let formData = new FormData();
-    formData.append("name", name);
-    formData.append("price", price);
-    formData.append("description", description);
-    formData.append("colors", JSON.stringify(colors));
-    formData.append("category", JSON.stringify(category));
-    formData.append("stock", stock);
-    formData.append("productBy", userId);
-    image.forEach((img) => {
-      formData.append("images", img);
-    });
-
-    dispatch(createProductAction(formData, token, setSuccess));
+    dispatch(updateProductAction(data, id, token, setSuccess));
   };
 
   useEffect(() => {
@@ -70,16 +61,41 @@ const DashboardCreateProduct = () => {
     }
   }, [success]);
 
+  useEffect(() => {
+    if (isLoading) {
+      dispatch(getProducts());
+    }
+  }, [dispatch, isLoading]);
+
+  useEffect(() => {
+    if (product) {
+      setName(product.doc.name);
+      setPrice(product.doc.price);
+      setStock(product.doc.stock);
+      setDescription(product.doc.description);
+      setCategory(JSON.parse(product.doc.category));
+      setColors(JSON.parse(product.doc.colors));
+      setInStock(product.doc.inStock);
+    }
+  }, [product]);
+
+  if (!product) {
+    <section className="home-section">
+      <TopBar />
+      <div className="home-content">
+        <h1 className="py-5 text-center display-2">
+          ERROR: 404 Product Not Found
+        </h1>
+      </div>
+    </section>;
+  }
+
   return (
     <section className="home-section">
       <TopBar />
       <div className="home-content">
-        <h1 className="display-5 text-center">Create Product</h1>
-        <form
-          onSubmit={handleSubmit}
-          encType="multipart/formdata"
-          className="col-md-8 mx-auto mt-5"
-        >
+        <h1 className="display-5 text-center">Update Product</h1>
+        <form onSubmit={handleSubmit} className="col-md-8 mx-auto mt-5">
           <div className="form-group my-2">
             <label htmlFor="name">Name</label>
             <input
@@ -136,6 +152,18 @@ const DashboardCreateProduct = () => {
               placeholder="Enter Product Category with comma seperated"
             />
           </div>
+          <div className="form-group">
+            <label htmlFor="instock">In Stock?</label>
+            <select
+              className="form-control"
+              id="instock"
+              value={inStock}
+              onChange={(e) => setInStock(e.target.value)}
+            >
+              <option value={"true"}>Yes</option>
+              <option value={"false"}>No</option>
+            </select>
+          </div>
           <div className="form-group my-2">
             <label htmlFor="stock">Stock</label>
             <input
@@ -147,58 +175,9 @@ const DashboardCreateProduct = () => {
               placeholder="Enter Product Stock"
             />
           </div>
-          <div className="form-group my-2">
-            <label>Images</label>
-            {image.map((img, index) => (
-              <div key={index} className="d-flex align-items-center">
-                <input
-                  type="file"
-                  className="form-control my-2"
-                  onChange={(e) =>
-                    setImage((prevImages) => {
-                      const newImages = [...prevImages];
-                      newImages[index] = e.target.files[0];
-                      return newImages;
-                    })
-                  }
-                />
-                {image.length > 1 && (
-                  <button
-                    type="button"
-                    className="btn btn-danger mx-2"
-                    onClick={() =>
-                      setImage((prevImages) => {
-                        const newImages = [...prevImages];
-                        newImages.splice(index, 1);
-                        return newImages;
-                      })
-                    }
-                  >
-                    <i className="fas fa-trash"></i>
-                  </button>
-                )}
-              </div>
-            ))}
-            {image.length < 3 && (
-              <button
-                type="button"
-                className="btn btn-primary mt-2"
-                onClick={() => {
-                  if (image.length === 3) {
-                    return toast.info("You can only upload 2 images");
-                  }
-                  setImage((prevImages) => [...prevImages, ""]);
-                }}
-              >
-                <i className="fas fa-plus"></i>
-
-                <span className="mx-2">Add Image</span>
-              </button>
-            )}
-          </div>
           <div className="d-flex my-4">
             <button type="submit" className="btn btn-success mx-auto my-2">
-              Create Product
+              Update Product
             </button>
             <button
               type="button"
@@ -214,4 +193,4 @@ const DashboardCreateProduct = () => {
   );
 };
 
-export default DashboardCreateProduct;
+export default DashboardUpdateProducts;
