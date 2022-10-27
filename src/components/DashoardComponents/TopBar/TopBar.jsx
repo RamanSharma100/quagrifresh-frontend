@@ -74,7 +74,7 @@ const TopBar = () => {
           <li>
             <Link
               className="dropdown-item d-flex align-items-center gap-2"
-              to="/account"
+              to={`/profile/${user?._id}`}
             >
               <i className="bx bx-user"></i>
               <span>My Account</span>

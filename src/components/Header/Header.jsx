@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
@@ -15,7 +15,13 @@ import frontCart2 from "../../assets/img/Frontcart/2.png";
 import Logo from "../../assets/img/logo.jpeg";
 
 const Header = () => {
-  const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
+  const { user, isLoggedIn } = useSelector(
+    (state) => ({
+      user: state.auth.user,
+      isLoggedIn: state.auth.isAuthenticated,
+    }),
+    shallowEqual
+  );
 
   return (
     <header id="aa-header">
@@ -169,7 +175,10 @@ const Header = () => {
                     ) : (
                       <>
                         <li>
-                          <Link className="text-decoration-none" to="/account">
+                          <Link
+                            className="text-decoration-none"
+                            to={`/profile/${user?._id}`}
+                          >
                             My Account
                           </Link>
                         </li>

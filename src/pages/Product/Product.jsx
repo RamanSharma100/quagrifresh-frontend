@@ -113,6 +113,7 @@ const Product = () => {
                                 key={index * 636}
                                 href="#"
                                 className={`aa-color-${color}`}
+                                style={{ backgroundColor: color }}
                               ></a>
                             )
                           )}

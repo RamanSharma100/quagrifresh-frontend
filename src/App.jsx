@@ -17,6 +17,7 @@ import {
   Dashboard,
   ForgotPassword,
   ResetPassword,
+  Profile,
 } from "./pages";
 import { login, logout } from "./redux/actionCreators/auth.actionCreators";
 
@@ -57,7 +58,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
 
-        <Route path="/account" element={<h1>Account</h1>} />
+        <Route path="/profile/:id" element={<Profile />} />
         <Route path="/wishlist" element={<h1>Wishlist</h1>} />
 
         <Route path="/products" element={<Products />} />
