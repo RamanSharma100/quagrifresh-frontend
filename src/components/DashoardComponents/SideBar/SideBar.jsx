@@ -20,13 +20,19 @@ const SideBar = () => {
         <li>
           <NavLink to="/dashboard/products">
             <i className="fa fa-box"></i>
-            <span className="links_name">Product</span>
+            <span className="links_name">Products</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/events">
+            <i className="fa fa-calendar"></i>
+            <span className="links_name">Events</span>
           </NavLink>
         </li>
         <li>
           <NavLink to="/dashboard/orders">
             <i className="fa fa-list-ul"></i>
-            <span className="links_name">Order list</span>
+            <span className="links_name">Orders</span>
           </NavLink>
         </li>
         <li>
