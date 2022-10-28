@@ -540,6 +540,10 @@ img {
     z-index: 9999;
 }
 
+#aa-header .aa-header-bottom .aa-cartbox:hover .aa-cartbox-summary {
+    display: block;
+}
+
 #aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary:after,
 #aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary:before {
     bottom: 100%;
@@ -2143,7 +2147,6 @@ a.video-play-btn {
 
 #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content {
     display: inline-block;
-    float: left;
     padding: 10% 0;
     text-align: center;
     width: 100%;

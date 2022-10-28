@@ -256,11 +256,11 @@ const Header = () => {
                 </div>
                 {/* <!-- / search box -->              */}
                 <div className="aa-cartbox">
-                  <a className="aa-cart-link" href="#">
+                  <Link className="aa-cart-link" to="/cart">
                     <span className="fa fa-shopping-basket"></span>
                     <span className="aa-cart-title">SHOPPING CART</span>
                     <span className="aa-cart-notify">2</span>
-                  </a>
+                  </Link>
                   <div className="aa-cartbox-summary">
                     <ul>
                       <li>
@@ -278,22 +278,8 @@ const Header = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="aa-cartbox-img" href="#">
-                          <img src={frontCart2} alt="img" />
-                        </a>
-                        <div className="aa-cartbox-info">
-                          <h4>
-                            <a href="#">Product Name</a>
-                          </h4>
-                          <p>1 x $25</p>
-                        </div>
-                        <a className="aa-remove-product" href="#">
-                          <span className="fa fa-times"></span>
-                        </a>
-                      </li>
-                      <li>
                         <span className="aa-cartbox-total-title">Total</span>
-                        <span className="aa-cartbox-total-price">$50</span>
+                        <span className="aa-cartbox-total-price">$25</span>
                       </li>
                     </ul>
                     <a

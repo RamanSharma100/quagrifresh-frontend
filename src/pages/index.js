@@ -11,3 +11,6 @@ export { default as ResetPassword } from "./Auth/ResetPassword";
 export { default as Profile } from "./Profile/Profile";
 export { default as Events } from "./Events/Events";
 export { default as Event } from "./Event/Event";
+export { default as Cart } from "./Cart/Cart";
+export { default as Checkout } from "./Checkout/Checkout";
+export { default as Contact } from "./Contact/Contact";

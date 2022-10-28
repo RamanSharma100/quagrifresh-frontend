@@ -20,6 +20,9 @@ import {
   Profile,
   Events,
   Event,
+  Cart,
+  Checkout,
+  Contact,
 } from "./pages";
 import { login, logout } from "./redux/actionCreators/auth.actionCreators";
 
@@ -68,17 +71,17 @@ const App = () => {
         <Route path="/events" element={<Events />} />
         <Route path="/event/:title/:id" element={<Event />} />
 
-        <Route path="/cart" element={<h1>Cart</h1>} />
-        <Route path="/checkout" element={<h1>Checkout</h1>} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
 
-        <Route path="/membership" element={<h1>Membership</h1>} />
+        {/* <Route path="/membership" element={<h1>Membership</h1>} /> */}
 
-        <Route path="/contact" element={<h1>Contact</h1>} />
+        <Route path="/contact" element={<Contact />} />
 
         <Route path="/dashboard/*" element={<Dashboard />} />
 
