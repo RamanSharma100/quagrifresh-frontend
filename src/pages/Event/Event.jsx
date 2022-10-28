@@ -16,7 +16,7 @@ const Event = () => {
       products: state.products.products.filter((product) =>
         state.events.events
           .find((event) => event.id === id)
-          .doc.products.includes(product.id)
+          ?.doc.products.includes(product.id)
       ),
       isLoading: state.events.isLoading,
       userId: state.auth.isAuthenticated && state.auth.user?._id,
@@ -196,35 +196,36 @@ const Event = () => {
               <div className="col-md-12 px-5">
                 <h1 className="SeePost__post_title display-5 mb-5">Products</h1>
                 <div className="row ga-2">
-                  {products?.map((product, index) => (
-                    <div className="col-md-4">
-                      <div className="card">
-                        <img
-                          src={product.doc.images[0].secure_url}
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h5 className="card-title">{product.doc.name}</h5>
-                          <p className="card-text">
-                            {product.doc.description.slice(0, 150)}...
-                          </p>
-                          <p className="card-text">
-                            Price: ${product.doc.price}
-                          </p>
-                          <Link
-                            to={`/product/${product.id}`}
-                            className="btn ms-5 btn-primary"
-                          >
-                            View Product
-                          </Link>
-                          <button className="btn ms-5 btn-outline-primary">
-                            Add To Cart
-                          </button>
+                  {products &&
+                    products?.map((product, index) => (
+                      <div className="col-md-4">
+                        <div className="card">
+                          <img
+                            src={product?.doc.images[0].secure_url}
+                            className="card-img-top"
+                            alt="..."
+                          />
+                          <div className="card-body">
+                            <h5 className="card-title">{product?.doc.name}</h5>
+                            <p className="card-text">
+                              {product?.doc.description.slice(0, 150)}...
+                            </p>
+                            <p className="card-text">
+                              Price: ${product?.doc.price}
+                            </p>
+                            <Link
+                              to={`/product/${product?.id}`}
+                              className="btn ms-5 btn-primary"
+                            >
+                              View Product
+                            </Link>
+                            <button className="btn ms-5 btn-outline-primary">
+                              Add To Cart
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               </div>
             </div>
