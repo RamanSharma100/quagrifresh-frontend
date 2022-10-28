@@ -16,7 +16,6 @@ const Products = () => {
   );
 
   const dispatch = useDispatch();
-  console.log(products);
 
   useEffect(() => {
     if (isLoading) {

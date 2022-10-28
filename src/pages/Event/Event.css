@@ -1,0 +1,15 @@
+.btn {
+    position: relative;
+    height: auto !important;
+    width: auto !important;
+}
+
+.profile .profile-pic {
+    overflow: hidden !important;
+}
+
+.profile .profile-pic img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}

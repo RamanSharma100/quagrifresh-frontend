@@ -9,3 +9,5 @@ export { default as Dashboard } from "./Dashboard/Dashboard";
 export { default as ForgotPassword } from "./Auth/ForgotPassword";
 export { default as ResetPassword } from "./Auth/ResetPassword";
 export { default as Profile } from "./Profile/Profile";
+export { default as Events } from "./Events/Events";
+export { default as Event } from "./Event/Event";
