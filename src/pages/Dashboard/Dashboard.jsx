@@ -16,6 +16,7 @@ import DashboardUpdateProducts from "./DashboardUpdateProducts/DashboardUpdatePr
 import DashboardCreateProduct from "./DashboardCreateProduct/DashboardCreateProduct";
 import DashboardEvents from "./DashboardEvents/DashboardEvents";
 import DashboardCreateEvent from "./DashboardCreateEvent/DashboardCreateEvent";
+import DashboardUpdateEvent from "./DashboardUpdateEvent/DashboardUpdateEvent";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ const Dashboard = () => {
 
         <Route path="events" element={<DashboardEvents />} />
         <Route path="events/create" element={<DashboardCreateEvent />} />
+        <Route path="events/update/:id" element={<DashboardUpdateEvent />} />
 
         <Route path="orders" element={<DashboardOrders />} />
         <Route path="stocks" element={<DashboardStocks />} />

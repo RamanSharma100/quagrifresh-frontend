@@ -13,6 +13,30 @@ const eventsReducer = (state = initialState, action) => {
         events: action.payload,
         isLoading: false,
       };
+    case types.SET_EVENTS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    case types.CREATE_EVENT:
+      return {
+        ...state,
+        events: [...state.events, action.payload],
+      };
+    case types.UPDATE_EVENT:
+      const currentEvent = state.events.find(
+        (event) => event.id === action.payload.id
+      );
+      const index = state.events.indexOf(currentEvent);
+      currentEvent.doc = { ...currentEvent.doc, ...action.payload.doc };
+
+      return {
+        ...state,
+        events: state.events.map((event, i) =>
+          i === index ? currentEvent : event
+        ),
+      };
+
     default:
       return state;
   }

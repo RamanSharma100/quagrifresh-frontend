@@ -1,2 +1,4 @@
 export const GET_EVENTS = "GET_EVENTS";
 export const SET_EVENTS_LOADING = "SET_EVENTS_LOADING";
+export const CREATE_EVENT = "CREATE_EVENT";
+export const UPDATE_EVENT = "UPDATE_EVENT";

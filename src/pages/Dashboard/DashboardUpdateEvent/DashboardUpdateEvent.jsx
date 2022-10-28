@@ -1,18 +1,26 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Editor } from "react-draft-wysiwyg";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import draftToHtmlPuri from "draftjs-to-html";
-
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import { TopBar } from "../../../components/DashoardComponents";
 import { getProducts } from "../../../redux/actionCreators/products.actionCreators";
-import { convertToRaw } from "draft-js";
-import { createEvent } from "../../../redux/actionCreators/events.actionCreators";
+import draftToHtmlPuri from "draftjs-to-html";
+
+import {
+  ContentState,
+  convertFromHTML,
+  convertToRaw,
+  EditorState,
+} from "draft-js";
+import {
+  getEvents,
+  updateEventAction,
+} from "../../../redux/actionCreators/events.actionCreators";
 import { toast } from "react-toastify";
 
-const DashboardCreateEvent = () => {
+const DashboardUpdateEvent = () => {
+  const { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -20,21 +28,26 @@ const DashboardCreateEvent = () => {
   const [deliveryDate, setDeliveryDate] = useState("");
   const [deliveryCost, setDeliveryCost] = useState("");
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const [image, setImage] = useState([""]);
 
   const [success, setSuccess] = useState(false);
 
-  const { products, isLoading, token, userId } = useSelector(
-    (state) => ({
-      products: state.products.products.filter(
-        (product) => product.doc.productBy === state.auth.user._id
-      ),
-      isLoading: state.products.isLoading,
-      token: state.auth.token,
-      userId: state.auth.user._id,
-    }),
-    shallowEqual
-  );
+  const { products, event, isLoading, isLoadingEvents, token, userId } =
+    useSelector(
+      (state) => ({
+        event: state.events.events.find(
+          (event) =>
+            event.doc.eventBy === state.auth.user._id && event.doc._id === id
+        ),
+        products: state.products.products.filter(
+          (product) => product.doc.productBy === state.auth.user._id
+        ),
+        isLoading: state.events.isLoading,
+        token: state.auth.token,
+        userId: state.auth.user._id,
+        isLoadingEvents: state.events.isLoading,
+      }),
+      shallowEqual
+    );
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,24 +55,21 @@ const DashboardCreateEvent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append(
-      "description",
-      draftToHtmlPuri(convertToRaw(description.getCurrentContent()))
-    );
-    formData.append("startDate", startDate);
-    formData.append("endDate", endDate);
-    formData.append("deliveryDate", deliveryDate);
-    formData.append("deliveryCost", deliveryCost);
-    formData.append("products", selectedProducts);
+    const formData = {
+      title,
+      startDate,
+      endDate,
+      deliveryDate,
+      deliveryCost,
+      products: selectedProducts,
+      eventBy: userId,
+      description: draftToHtmlPuri(
+        convertToRaw(description.getCurrentContent())
+      ),
+      buyers: event.doc.buyers,
+    };
 
-    image.forEach((img) => {
-      formData.append("images", img);
-    });
-    formData.append("eventBy", userId);
-
-    dispatch(createEvent(formData, token, setSuccess));
+    dispatch(updateEventAction(formData, id, token, setSuccess));
   };
 
   useEffect(() => {
@@ -69,11 +79,35 @@ const DashboardCreateEvent = () => {
   }, [dispatch, isLoading]);
 
   useEffect(() => {
+    if (isLoadingEvents) {
+      dispatch(getEvents());
+    }
+  }, [dispatch, isLoadingEvents]);
+
+  useEffect(() => {
     if (success) {
       toast.success("Event Created Successfully!!");
       navigate("/dashboard/events");
     }
   }, [success]);
+
+  useEffect(() => {
+    if (event) {
+      setTitle(event.doc.title);
+      setDescription(
+        EditorState.createWithContent(
+          ContentState.createFromBlockArray(
+            convertFromHTML(event.doc.description)
+          )
+        )
+      );
+      setStartDate(event.doc.startDate);
+      setEndDate(event.doc.endDate);
+      setDeliveryDate(event.doc.deliveryDate);
+      setDeliveryCost(event.doc.deliveryCost);
+      setSelectedProducts(event.doc.products);
+    }
+  }, [event]);
 
   return (
     <section className="home-section">
@@ -164,6 +198,7 @@ const DashboardCreateEvent = () => {
                     type="checkbox"
                     value={product.doc._id}
                     id={product.doc._id}
+                    checked={selectedProducts.includes(product.doc._id)}
                     onChange={(e) => {
                       if (e.target.checked) {
                         setSelectedProducts([
@@ -187,58 +222,9 @@ const DashboardCreateEvent = () => {
             </div>
           </div>
 
-          <div className="form-group my-2">
-            <label>Images</label>
-            {image.map((img, index) => (
-              <div key={index} className="d-flex align-items-center">
-                <input
-                  type="file"
-                  className="form-control my-2"
-                  onChange={(e) =>
-                    setImage((prevImages) => {
-                      const newImages = [...prevImages];
-                      newImages[index] = e.target.files[0];
-                      return newImages;
-                    })
-                  }
-                />
-                {image.length > 1 && (
-                  <button
-                    type="button"
-                    className="btn btn-danger mx-2"
-                    onClick={() =>
-                      setImage((prevImages) => {
-                        const newImages = [...prevImages];
-                        newImages.splice(index, 1);
-                        return newImages;
-                      })
-                    }
-                  >
-                    <i className="fas fa-trash"></i>
-                  </button>
-                )}
-              </div>
-            ))}
-            {image.length < 3 && (
-              <button
-                type="button"
-                className="btn btn-primary mt-2"
-                onClick={() => {
-                  if (image.length === 3) {
-                    return toast.info("You can only upload 2 images");
-                  }
-                  setImage((prevImages) => [...prevImages, ""]);
-                }}
-              >
-                <i className="fas fa-plus"></i>
-
-                <span className="mx-2">Add Image</span>
-              </button>
-            )}
-          </div>
           <div className="d-flex my-4">
             <button type="submit" className="btn btn-success mx-auto my-2">
-              Create Event
+              Update Event
             </button>
             <button
               type="button"
@@ -254,4 +240,4 @@ const DashboardCreateEvent = () => {
   );
 };
 
-export default DashboardCreateEvent;
+export default DashboardUpdateEvent;
