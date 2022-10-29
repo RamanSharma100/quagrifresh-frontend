@@ -1,8 +1,45 @@
 // import { useEffect } from "react";
+import "@tomtom-international/web-sdk-maps/dist/maps.css";
+import tt from "@tomtom-international/web-sdk-maps";
 import "./Contact.css";
+import { useEffect, useRef, useState } from "react";
 // import { Map, GoogleApiWrapper } from "google-maps-react";
 
 const Contact = (props) => {
+  const mapElement = useRef();
+  const [mapLongitude, setMapLongitude] = useState(-77.434769);
+  const [mapLatitude, setMapLatitude] = useState(37.54129);
+  const [mapZoom, setMapZoom] = useState(13);
+  const [map, setMap] = useState({});
+
+  const increaseZoom = () => {
+    if (mapZoom < MAX_ZOOM) {
+      setMapZoom(mapZoom + 1);
+    }
+  };
+
+  const decreaseZoom = () => {
+    if (mapZoom > 1) {
+      setMapZoom(mapZoom - 1);
+    }
+  };
+
+  const updateMap = () => {
+    map.setCenter([parseFloat(mapLongitude), parseFloat(mapLatitude)]);
+    map.setZoom(mapZoom);
+  };
+
+  useEffect(() => {
+    let map = tt.map({
+      key: import.meta.env.QUAGRI_API_TOMTOM_KEY,
+      container: mapElement.current,
+      center: [mapLongitude, mapLatitude],
+      zoom: mapZoom,
+    });
+    setMap(map);
+    return () => map.remove();
+  }, []);
+
   return (
     <section className="contact_section layout_padding2-top layout_padding-bottom">
       <div className="container">
@@ -56,7 +93,7 @@ const Contact = (props) => {
           <div className="col-md-6 px-0">
             <div className="map_container">
               <div className="map">
-                <div id="googleMap">
+                <div ref={mapElement} id="googleMap">
                   {/* <Map
                     google={props.google}
                     zoom={14}
