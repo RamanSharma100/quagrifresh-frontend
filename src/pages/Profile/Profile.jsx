@@ -4,6 +4,8 @@ import { shallowEqual, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import tt from "@tomtom-international/web-sdk-services";
+
 import "./Profile.css";
 
 const Profile = () => {
@@ -21,6 +23,8 @@ const Profile = () => {
   const [country, setCountry] = useState("");
   const [area, setArea] = useState("");
 
+  const [longlat, setLonglat] = useState(null);
+
   const { oldUser } = useSelector(
     (state) => ({
       oldUser: state.auth.user,
@@ -29,6 +33,22 @@ const Profile = () => {
   );
 
   const [edit, setEdit] = useState(false);
+
+  useEffect(() => {
+    console.log(address1, address2, pincode, city, state, country, area);
+    tt.services
+      .fuzzySearch({
+        key: import.meta.env.QUAGRI_API_TOMTOM_KEY,
+        query: `${(address1 + address2).trim()}, ${city}, ${state}, ${country}`,
+      })
+      .then((res) => {
+        const amendRes = res.results;
+        setLonglat(amendRes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [address1, address2, pincode, city, state, country]);
 
   useEffect(() => {
     if (id && !user) {
@@ -85,29 +105,29 @@ const Profile = () => {
   };
 
   return (
-    <div class="container rounded bg-white mb-5">
+    <div className="container rounded bg-white mb-5">
       <h1 className="display-2 text-center">User Profile</h1>
-      <div class="row ">
-        <div class="col-md-3 border-right">
-          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+      <div className="row ">
+        <div className="col-md-3 border-right">
+          <div className="d-flex flex-column align-items-center text-center p-3 py-5">
             {user.avatar ? (
               <img
-                class="rounded-circle mt-5"
+                className="rounded-circle mt-5"
                 width="150px"
                 src={user.avatar}
               />
             ) : (
               <img
-                class="rounded-circle mt-5"
+                className="rounded-circle mt-5"
                 width="150px"
                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
               />
             )}
-            <span class="font-weight-bold">{user.name}</span>
-            <span class="text-black-50">{user.email}</span>
+            <span className="font-weight-bold">{user.name}</span>
+            <span className="text-black-50">{user.email}</span>
             <span
               onClick={() => toast.info("This feature coming soon!")}
-              class="btn btn-block btn-sm mt-4 w-100 btn-outline-primary"
+              className="btn btn-block btn-sm mt-4 w-100 btn-outline-primary"
             >
               Follow
             </span>
@@ -119,16 +139,16 @@ const Profile = () => {
             <span> </span>
           </div>
         </div>
-        <div class="col-md-5 border-right">
-          <div class="p-3 py-5">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="text-right">{edit && "Update "} Profile</h4>
+        <div className="col-md-5 border-right">
+          <div className="p-3 py-5">
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h4 className="text-right">{edit && "Update "} Profile</h4>
             </div>
-            <div class="col-md-12 my-2">
-              <label class="labels">Name</label>
+            <div className="col-md-12 my-2">
+              <label className="labels">Name</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter your name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -136,78 +156,78 @@ const Profile = () => {
               />
             </div>
 
-            <div class="row mt-3">
-              <div class="col-md-12 my-2">
-                <label class="labels">Mobile Number</label>
+            <div className="row mt-3">
+              <div className="col-md-12 my-2">
+                <label className="labels">Mobile Number</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="enter phone number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   disabled={!edit}
                 />
               </div>
-              <div class="col-md-12 my-2">
-                <label class="labels">Address Line 1</label>
+              <div className="col-md-12 my-2">
+                <label className="labels">Address Line 1</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="enter address line 1"
                   value={address1}
                   onChange={(e) => setAddress1(e.target.value)}
                   disabled={!edit}
                 />
               </div>
-              <div class="col-md-12 my-2">
-                <label class="labels">Address Line 2</label>
+              <div className="col-md-12 my-2">
+                <label className="labels">Address Line 2</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="enter address line 2"
                   value={address2}
                   onChange={(e) => setAddress2(e.target.value)}
                   disabled={!edit}
                 />
               </div>
-              <div class="col-md-12 my-2">
-                <label class="labels">Pin code</label>
+              <div className="col-md-12 my-2">
+                <label className="labels">Pin code</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Enter pin code"
                   value={pincode}
                   onChange={(e) => setPincode(e.target.value)}
                   disabled={!edit}
                 />
               </div>
-              <div class="col-md-12 my-2">
-                <label class="labels">City/Town</label>
+              <div className="col-md-12 my-2">
+                <label className="labels">City/Town</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Enter city"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   disabled={!edit}
                 />
               </div>
-              <div class="col-md-12 my-2">
-                <label class="labels">Area</label>
+              <div className="col-md-12 my-2">
+                <label className="labels">Area</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Enter Area"
                   value={area}
                   onChange={(e) => setArea(e.target.value)}
                   disabled={!edit}
                 />
               </div>
-              <div class="col-md-12 my-2">
-                <label class="labels">Email ID</label>
+              <div className="col-md-12 my-2">
+                <label className="labels">Email ID</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="enter email id"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -215,23 +235,23 @@ const Profile = () => {
                 />
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-6">
-                <label class="labels">Country</label>
+            <div className="row mt-3">
+              <div className="col-md-6">
+                <label className="labels">Country</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="country"
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                   disabled={!edit}
                 />
               </div>
-              <div class="col-md-6">
-                <label class="labels">State/Region</label>
+              <div className="col-md-6">
+                <label className="labels">State/Region</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="state"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
@@ -239,19 +259,19 @@ const Profile = () => {
                 />
               </div>
             </div>
-            <div class="mt-5 text-center">
+            <div className="mt-5 text-center">
               {edit && oldUser && oldUser?._id === id ? (
                 <>
                   <button
                     onClick={handleSave}
-                    class="btn btn-success profile-button"
+                    className="btn btn-success profile-button"
                     type="button"
                   >
                     Save Profile
                   </button>
                   <button
                     onClick={() => setEdit(false)}
-                    class="btn btn-outline-danger ms-5 profile-button"
+                    className="btn btn-outline-danger ms-5 profile-button"
                     type="button"
                   >
                     Cancel
@@ -262,7 +282,7 @@ const Profile = () => {
                   {oldUser && oldUser?._id === id && (
                     <button
                       onClick={() => setEdit(true)}
-                      class="btn btn-primary profile-button"
+                      className="btn btn-primary profile-button"
                       type="button"
                     >
                       Edit Profile
