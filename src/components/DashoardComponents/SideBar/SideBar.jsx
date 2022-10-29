@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LOGO from "../../../assets/img/logo.jpeg";
 
 const SideBar = () => {
+  const user = useSelector((state) => state.auth.user);
   return (
     <div className="sidebar">
       <div className="logo-details">
@@ -17,30 +19,34 @@ const SideBar = () => {
             <span className="links_name">Dashboard</span>
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/dashboard/products">
-            <i className="fa fa-box"></i>
-            <span className="links_name">Products</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/dashboard/events">
-            <i className="fa fa-calendar"></i>
-            <span className="links_name">Events</span>
-          </NavLink>
-        </li>
+        {user && user.type === "seller" && (
+          <>
+            <li>
+              <NavLink to="/dashboard/products">
+                <i className="fa fa-box"></i>
+                <span className="links_name">Products</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/events">
+                <i className="fa fa-calendar"></i>
+                <span className="links_name">Events</span>
+              </NavLink>
+            </li>
+          </>
+        )}
         <li>
           <NavLink to="/dashboard/orders">
             <i className="fa fa-list-ul"></i>
             <span className="links_name">Orders</span>
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/dashboard/stocks">
             <i className="fa fa-coins"></i>
             <span className="links_name">Stock</span>
           </NavLink>
-        </li>
+        </li> */}
         {/* <li>
           <NavLink to="/dashboard/">
             <i className="fa fa-book"></i>

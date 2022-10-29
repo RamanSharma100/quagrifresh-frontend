@@ -1,7 +1,6 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "./Contact.css";
-// AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI
-import { Map, GoogleApiWrapper } from "google-maps-react";
+// import { Map, GoogleApiWrapper } from "google-maps-react";
 
 const Contact = (props) => {
   return (
@@ -58,7 +57,7 @@ const Contact = (props) => {
             <div className="map_container">
               <div className="map">
                 <div id="googleMap">
-                  <Map
+                  {/* <Map
                     google={props.google}
                     zoom={14}
                     style={{
@@ -69,7 +68,7 @@ const Contact = (props) => {
                       lat: -40.712775,
                       lng: -74.005973,
                     }}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
@@ -80,6 +79,7 @@ const Contact = (props) => {
   );
 };
 
-export default GoogleApiWrapper({
-  apiKey: import.meta.env.QUAGRI_API_GOOGLE_KEY,
-})(Contact);
+// GoogleApiWrapper({
+//   apiKey: import.meta.env.QUAGRI_API_GOOGLE_KEY,
+// })(
+export default Contact;

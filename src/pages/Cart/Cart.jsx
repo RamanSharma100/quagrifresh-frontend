@@ -1,11 +1,58 @@
 import { Link } from "react-router-dom";
 
 import BannerImage from "../../assets/img/background/banner.jpg";
-import Image1 from "../../assets/img/products/product-img-4.jpg";
-import Image2 from "../../assets/img/Frontcart/1.jpg";
-import Image3 from "../../assets/img/Frontcart/2.png";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeCartItemAction,
+  updateCart,
+} from "../../redux/actionCreators/cart.actionCreators";
+import { useEffect, useState } from "react";
+import { sum } from "../../methods";
 
 const Cart = () => {
+  const { cart, user, token, products } = useSelector((state) => ({
+    cart: state.cart,
+    user: state.auth.user,
+    token: state.auth.token,
+    products: state.products.products,
+  }));
+
+  const dispatch = useDispatch();
+
+  const [cartQty, setCartQty] = useState([]);
+
+  const removeItemFromCart = (item) => {
+    dispatch(removeCartItemAction(item, user?._id, token));
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const newCart = {
+      ...cart,
+      cartItems: cart.cartItems.map((item, index) => {
+        return {
+          product: item.product,
+          quantity: cartQty[index],
+          price: item.price,
+        };
+      }),
+      cartTotal: sum(
+        cart.cartItems.map(
+          (item, index) => parseFloat(item.price) * parseInt(cartQty[index])
+        )
+      ),
+      cartTotalQuantity: sum(cartQty.map((item) => parseInt(item))),
+    };
+
+    dispatch(updateCart(newCart, user?._id, token));
+  };
+
+  useEffect(() => {
+    if (cart.cartItems.length > 0) {
+      setCartQty(cart.cartItems.map((item) => item.quantity));
+    }
+  }, [cart]);
+
   return (
     <>
       <section id="aa-catg-head-banner">
@@ -40,7 +87,7 @@ const Cart = () => {
             <div className="col-md-12">
               <div className="cart-view-area bg-white">
                 <div className="cart-view-table bg-white">
-                  <form action="">
+                  <form onSubmit={handleUpdate}>
                     <div className="table-responsive">
                       <table className="table">
                         <thead>
@@ -54,84 +101,79 @@ const Cart = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>
-                              <a className="remove" href="#">
-                                <fa className="fa fa-trash"></fa>
-                              </a>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <img src={Image1} alt="img" />
-                              </a>
-                            </td>
-                            <td>
-                              <a className="aa-cart-title" href="#">
-                                Fruit
-                              </a>
-                            </td>
-                            <td>$250</td>
-                            <td>
-                              <input
-                                className="aa-cart-quantity"
-                                type="number"
-                                value="1"
-                              />
-                            </td>
-                            <td>$250</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a className="remove" href="#">
-                                <fa className="fa fa-trash"></fa>
-                              </a>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <img src={Image3} alt="img" />
-                              </a>
-                            </td>
-                            <td>
-                              <a className="aa-cart-title" href="#">
-                                Fruit
-                              </a>
-                            </td>
-                            <td>$150</td>
-                            <td>
-                              <input
-                                className="aa-cart-quantity"
-                                type="number"
-                                value="1"
-                              />
-                            </td>
-                            <td>$150</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a className="remove" href="#">
-                                <fa className="fa fa-trash"></fa>
-                              </a>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <img src={Image2} alt="img" />
-                              </a>
-                            </td>
-                            <td>
-                              <a className="aa-cart-title" href="#">
-                                Vegetable
-                              </a>
-                            </td>
-                            <td>$50</td>
-                            <td>
-                              <input
-                                className="aa-cart-quantity"
-                                type="number"
-                                value="1"
-                              />
-                            </td>
-                            <td>$50</td>
-                          </tr>
+                          {cart &&
+                            products &&
+                            cart.cartItems.map((item) => (
+                              <tr key={item.product + 999}>
+                                <td>
+                                  <a
+                                    className="remove"
+                                    role={"button"}
+                                    onClick={() => removeItemFromCart(item)}
+                                  >
+                                    <fa className="fa fa-trash"></fa>
+                                  </a>
+                                </td>
+                                <td>
+                                  <a href="#">
+                                    <img
+                                      src={
+                                        products.find(
+                                          (product) =>
+                                            product.id === item.product
+                                        )?.doc?.images[0].secure_url
+                                      }
+                                      alt="img"
+                                    />
+                                  </a>
+                                </td>
+                                <td>
+                                  <Link
+                                    className="aa-cart-title"
+                                    to={`/product/${
+                                      products.find(
+                                        (product) => product.id === item.product
+                                      )?.id
+                                    }`}
+                                  >
+                                    {
+                                      products.find(
+                                        (product) => product.id === item.product
+                                      )?.doc.name
+                                    }
+                                  </Link>
+                                </td>
+                                <td>
+                                  $
+                                  {
+                                    products.find(
+                                      (product) => product.id === item.product
+                                    )?.doc.price
+                                  }
+                                </td>
+                                <td>
+                                  <input
+                                    className="aa-cart-quantity"
+                                    type="number"
+                                    value={
+                                      cartQty[cart.cartItems.indexOf(item)]
+                                    }
+                                    onChange={(e) => {
+                                      const newCartQty = [...cartQty];
+                                      newCartQty[cart.cartItems.indexOf(item)] =
+                                        parseInt(e.target.value);
+                                      setCartQty(newCartQty);
+                                    }}
+                                  />
+                                </td>
+                                <td>
+                                  $
+                                  {products.find(
+                                    (product) => product.id === item.product
+                                  )?.doc.price * item.quantity}
+                                </td>
+                              </tr>
+                            ))}
                           <tr>
                             <td colspan="6" className="aa-cart-view-bottom">
                               <div className="aa-cart-coupon">
@@ -165,16 +207,16 @@ const Cart = () => {
                       <tbody>
                         <tr>
                           <th>Subtotal</th>
-                          <td>$450</td>
+                          <td>${cart.cartTotal}</td>
                         </tr>
                         <tr>
                           <th>Total</th>
-                          <td>$450</td>
+                          <td>${cart.cartTotal}</td>
                         </tr>
                       </tbody>
                     </table>
                     <a href="#" className="aa-cart-view-btn">
-                      Proced to Checkout
+                      Proceed to Checkout
                     </a>
                   </div>
                 </div>

@@ -4,6 +4,7 @@ import { logout } from "../../../redux/actionCreators/auth.actionCreators";
 import { toast } from "react-toastify";
 
 import Avatar from "../../../assets/img/images/2.png";
+import { clearCart } from "../../../redux/actionCreators/cart.actionCreators";
 
 const TopBar = () => {
   const { user, isLoggedIn } = useSelector((state) => ({
@@ -16,7 +17,9 @@ const TopBar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("quagri_tkn");
+    localStorage.removeItem("quagri_cart");
     dispatch(logout());
+    dispatch(clearCart());
     toast.success("Logged out successfully!");
     navigate("/login");
   };

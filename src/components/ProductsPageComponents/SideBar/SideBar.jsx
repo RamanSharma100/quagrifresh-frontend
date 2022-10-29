@@ -1,4 +1,22 @@
+import { useSelector } from "react-redux";
+
 const SideBar = () => {
+  const { productCategories, colors } = useSelector((state) => ({
+    productCategories: new Set(
+      [].concat(
+        ...state.products.products.map((product) =>
+          JSON.parse(product.doc.category)
+        )
+      )
+    ),
+    colors: new Set(
+      [].concat(
+        ...state.products.products.map((product) =>
+          JSON.parse(product.doc.colors)
+        )
+      )
+    ),
+  }));
   return (
     <div className="col-lg-3 col-md-3 col-sm-4 col-md-pull-9 mt-3">
       <aside className="aa-sidebar">
@@ -7,21 +25,14 @@ const SideBar = () => {
         <div className="aa-sidebar-widget">
           <h3 className="py-3">Category</h3>
           <ul className="aa-catg-nav">
-            <li>
-              <a href="#">Fruits</a>
-            </li>
-            <li>
-              <a href="">Vegetables</a>
-            </li>
-            <li>
-              <a href="">Herbs</a>
-            </li>
-            <li>
-              <a href="">Bakery Goods</a>
-            </li>
-            <li>
-              <a href="">Dairy & Eggs</a>
-            </li>
+            {productCategories &&
+              [...productCategories].map((category) => (
+                <li key={category}>
+                  <a href="#" className="text-capitalize">
+                    {category}
+                  </a>
+                </li>
+              ))}
           </ul>
         </div>
         {/* sdiebar widged  */}
@@ -29,18 +40,17 @@ const SideBar = () => {
         <div className="aa-sidebar-widget mt-4">
           <h3>Tags</h3>
           <div className="tag-cloud">
-            <a href="#">Wine</a>
-            <a href="#">Ecommerce</a>
-            <a href="#">Shop</a>
-            <a href="#">Seafood</a>
-            <a href="#">Pulses</a>
-            <a href="#">Meat</a>
-            <a href="#">Beverages</a>
+            {productCategories &&
+              [...productCategories].map((category) => (
+                <a key={category + 542} href="#" className="text-capitalize">
+                  {category}
+                </a>
+              ))}
           </div>
         </div>
         {/* sdiebar widged  */}
 
-        <div className="aa-sidebar-widget mt-4">
+        {/* <div className="aa-sidebar-widget mt-4">
           <h3>Shop By Price</h3>
 
           <div className="aa-sidebar-price-range">
@@ -60,24 +70,23 @@ const SideBar = () => {
               </button>
             </form>
           </div>
-        </div>
+        </div> */}
         {/* sdiebar widged  */}
 
         <div className="aa-sidebar-widget mt-4">
           <h3>Shop By Color</h3>
           <div className="aa-color-tag">
-            <a className="aa-color-green" href="#"></a>
-            <a className="aa-color-yellow" href="#"></a>
-            <a className="aa-color-pink" href="#"></a>
-            <a className="aa-color-purple" href="#"></a>
-            <a className="aa-color-blue" href="#"></a>
-            <a className="aa-color-orange" href="#"></a>
-            <a className="aa-color-gray" href="#"></a>
-            <a className="aa-color-black" href="#"></a>
-            <a className="aa-color-white" href="#"></a>
-            <a className="aa-color-cyan" href="#"></a>
-            <a className="aa-color-olive" href="#"></a>
-            <a className="aa-color-orchid" href="#"></a>
+            {colors &&
+              [...colors].map((color) => (
+                <a
+                  key={color}
+                  href="#"
+                  className={`aa-color-${color}`}
+                  style={{
+                    backgroundColor: color,
+                  }}
+                ></a>
+              ))}
           </div>
         </div>
         {/* sdiebar widged  */}

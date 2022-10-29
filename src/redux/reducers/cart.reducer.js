@@ -30,18 +30,91 @@ const cartReducer = (state = initialState, action) => {
         cartTotalQuantity: 0,
       };
     case types.ADD_CART_ITEM:
-      return {
-        ...state,
-        cartItems: [...state.cartItems, payload],
-        cartTotal: state.cartTotal + payload.price,
-        cartTotalQuantity: state.cartTotalQuantity + 1,
-      };
+      // check if item already exists in cart
+      const itemExists = state.cartItems.find(
+        (item) => item.product === payload.product
+      );
+
+      if (itemExists) {
+        localStorage.setItem(
+          "quagri_cart",
+          JSON.stringify({
+            ...state,
+            cartItems: state.cartItems.map((item) =>
+              item._id === payload._id
+                ? {
+                    ...item,
+                    quantity:
+                      parseInt(item.quantity) + parseInt(payload.quantity),
+                  }
+                : item
+            ),
+            userId,
+            checkedOut: false,
+            cartTotal:
+              parseFloat(state.cartTotal) +
+              parseFloat(payload.price) * parseInt(payload.quantity),
+            cartTotalQuantity:
+              parseInt(state.cartTotalQuantity) + parseInt(payload.quantity),
+          })
+        );
+        return {
+          ...state,
+          cartItems: state.cartItems.map((item) =>
+            item._id === payload._id
+              ? {
+                  ...item,
+                  quantity:
+                    parseInt(item.quantity) + parseInt(payload.quantity),
+                }
+              : item
+          ),
+          userId,
+          checkedOut: false,
+          cartTotal:
+            parseFloat(state.cartTotal) +
+            parseFloat(payload.price) * parseInt(payload.quantity),
+          cartTotalQuantity:
+            parseInt(state.cartTotalQuantity) + parseInt(payload.quantity),
+        };
+      } else {
+        localStorage.setItem(
+          "quagri_cart",
+          JSON.stringify({
+            ...state,
+            cartItems: [...state.cartItems, payload],
+            checkedOut: false,
+            cartTotal:
+              parseFloat(state.cartTotal) +
+              parseFloat(payload.price) * parseInt(payload.quantity),
+            cartTotalQuantity:
+              parseInt(state.cartTotalQuantity) + parseInt(payload.quantity),
+          })
+        );
+
+        return {
+          ...state,
+          cartItems: [...state.cartItems, payload],
+          checkedOut: false,
+          cartTotal:
+            parseFloat(state.cartTotal) +
+            parseFloat(payload.price) * parseInt(payload.quantity),
+          cartTotalQuantity:
+            parseInt(state.cartTotalQuantity) + parseInt(payload.quantity),
+        };
+      }
+
     case types.REMOVE_CART_ITEM:
       return {
         ...state,
-        cartItems: state.cartItems.filter((item) => item.id !== payload.id),
-        cartTotal: state.cartTotal - payload.price,
-        cartTotalQuantity: state.cartTotalQuantity - 1,
+        cartItems: cartObj.cartItems.filter(
+          (item) => item.product !== cartItem.product
+        ),
+        cartTotal:
+          parseFloat(cartObj.cartTotal) -
+          parseFloat(cartItem.price) * parseInt(cartItem.quantity),
+        cartTotalQuantity:
+          parseInt(cartObj.cartTotalQuantity) - parseInt(cartItem.quantity),
       };
     case types.UPDATE_CART_ITEM:
       return {
@@ -53,6 +126,12 @@ const cartReducer = (state = initialState, action) => {
           return item;
         }),
         cartTotal: state.cartTotal + payload.price,
+      };
+
+    case types.UPDATE_CART:
+      return {
+        ...state,
+        ...payload,
       };
     default:
       return state;

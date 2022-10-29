@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Header.css";
 
@@ -13,15 +13,39 @@ import frontCart1 from "../../assets/img/Frontcart/1.jpg";
 import frontCart2 from "../../assets/img/Frontcart/2.png";
 
 import Logo from "../../assets/img/logo.jpeg";
+import { logout } from "../../redux/actionCreators/auth.actionCreators";
+import {
+  clearCart,
+  removeCartItemAction,
+} from "../../redux/actionCreators/cart.actionCreators";
 
 const Header = () => {
-  const { user, isLoggedIn } = useSelector(
+  const { user, isLoggedIn, cart, products, token } = useSelector(
     (state) => ({
       user: state.auth.user,
       isLoggedIn: state.auth.isAuthenticated,
+      cart: state.cart,
+      products: state.products.products,
+      token: state.auth.token,
     }),
     shallowEqual
   );
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("quagri_tkn");
+    localStorage.removeItem("quagri_cart");
+    dispatch(logout());
+    dispatch(clearCart());
+    toast.success("Logged out successfully!");
+    navigate("/login");
+  };
+
+  const removeItemFromCart = (item) => {
+    dispatch(removeCartItemAction(item, user?._id, token));
+  };
 
   return (
     <header id="aa-header">
@@ -206,7 +230,11 @@ const Header = () => {
                           </Link>
                         </li>
                         <li>
-                          <a role={"button"} className="text-decoration-none">
+                          <a
+                            onClick={handleLogout}
+                            role={"button"}
+                            className="text-decoration-none"
+                          >
                             Logout
                           </a>
                         </li>
@@ -259,35 +287,73 @@ const Header = () => {
                   <Link className="aa-cart-link" to="/cart">
                     <span className="fa fa-shopping-basket"></span>
                     <span className="aa-cart-title">SHOPPING CART</span>
-                    <span className="aa-cart-notify">2</span>
+                    <span className="aa-cart-notify">
+                      {cart?.cartTotalQuantity}
+                    </span>
                   </Link>
                   <div className="aa-cartbox-summary">
                     <ul>
-                      <li>
-                        <a className="aa-cartbox-img" href="#">
-                          <img src={frontCart1} alt="img" />
-                        </a>
-                        <div className="aa-cartbox-info">
-                          <h4>
-                            <a href="#">Product Name</a>
-                          </h4>
-                          <p>1 x $25</p>
-                        </div>
-                        <a className="aa-remove-product" href="#">
-                          <span className="fa fa-times"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <span className="aa-cartbox-total-title">Total</span>
-                        <span className="aa-cartbox-total-price">$25</span>
-                      </li>
+                      {cart?.cartItems.length > 0 ? (
+                        cart?.cartItems?.map((item) => (
+                          <li key={item.product}>
+                            <a className="aa-cartbox-img" href="#">
+                              <img
+                                src={
+                                  products?.find(
+                                    (product) => product.id === item.product
+                                  )?.doc?.images[0].secure_url
+                                }
+                                alt="img"
+                              />
+                            </a>
+                            <div className="aa-cartbox-info">
+                              <h4>
+                                <a href="#">
+                                  {
+                                    products?.find(
+                                      (product) => product.id === item.product
+                                    )?.doc?.name
+                                  }
+                                </a>
+                              </h4>
+                              <p>
+                                {item.quantity} x ${item.price}
+                              </p>
+                            </div>
+                            <a
+                              className="aa-remove-product"
+                              onClick={() => removeItemFromCart(item)}
+                            >
+                              <span className="fa fa-times"></span>
+                            </a>
+                          </li>
+                        ))
+                      ) : (
+                        <li>
+                          <div className="aa-cartbox-info">
+                            <h4>
+                              <a>No Items in Cart</a>
+                            </h4>
+                          </div>
+                        </li>
+                      )}
+                      {cart?.cartItems?.length > 0 && (
+                        <li>
+                          <span className="aa-cartbox-total-title">Total</span>
+                          <span className="aa-cartbox-total-price">
+                            ${cart.cartTotal}
+                          </span>
+                        </li>
+                      )}
                     </ul>
-                    <a
-                      className="aa-cartbox-checkout aa-primary-btn"
-                      href="checkout.html"
-                    >
-                      Checkout
-                    </a>
+                    {cart?.cartItems?.length > 0 && (
+                      <a
+                        className="aa-cartbox-checkout aa-primary-btn"
+                        href="checkout.html"
+                      >
+                        Checkout
+                      </a>
+                    )}
                   </div>
                 </div>
                 {/* <!-- / cart box --> */}

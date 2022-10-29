@@ -25,6 +25,8 @@ import {
   Contact,
 } from "./pages";
 import { login, logout } from "./redux/actionCreators/auth.actionCreators";
+import { addCart, getCart } from "./redux/actionCreators/cart.actionCreators";
+import { getProducts } from "./redux/actionCreators/products.actionCreators";
 
 const App = () => {
   const location = useLocation();
@@ -36,19 +38,29 @@ const App = () => {
     if (!window.location.pathname.includes("dashboard")) {
       // check token and redirect to login if not present
       const token = localStorage.getItem("quagri_tkn");
+      const cart = localStorage.getItem("quagri_cart");
 
       if (!token) {
+        // get cart from local storage
+        if (cart) {
+          dispatch(addCart(JSON.parse(localStorage.getItem("quagri_cart"))));
+          console.log("working 1");
+        }
         dispatch(logout());
-        console.log("no token");
       } else {
         const decodedToken = jwtDecode(JSON.parse(token));
 
         if (decodedToken.exp * 1000 < new Date().getTime()) {
+          if (cart) {
+            dispatch(addCart(JSON.parse(localStorage.getItem("quagri_cart"))));
+            console.log("working 2");
+          }
           dispatch(logout());
-          console.log("token expired");
         } else {
           dispatch(login({ token: JSON.parse(token), user: decodedToken }));
-          console.log("token present");
+          dispatch(getCart(decodedToken._id, JSON.parse(token)));
+          dispatch(getProducts());
+          console.log("working 4");
         }
       }
     }

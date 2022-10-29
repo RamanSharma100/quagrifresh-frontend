@@ -11,11 +11,15 @@ const DashboardProducts = () => {
       products: state.products.products.filter(
         (product) => product.doc.productBy === state.auth.user._id
       ),
-      totalStock: state.products.products.map((product) =>
-        parseInt(product.doc.stock)
+      totalStock: state.products.products.map(
+        (product) =>
+          product.doc.productBy === state.auth.user._id &&
+          parseInt(product.doc.stock)
       ),
       totalStockWorth: state.products.products.map(
-        (product) => parseInt(product.doc.stock) * parseFloat(product.doc.price)
+        (product) =>
+          product.doc.productBy === state.auth.user._id &&
+          parseInt(product.doc.stock) * parseFloat(product.doc.price)
       ),
       isLoading: state.products.isLoading,
     }),

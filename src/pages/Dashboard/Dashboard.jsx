@@ -22,6 +22,8 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const user = useSelector((state) => state.auth.user);
+
   const isLoggedin = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
@@ -59,19 +61,30 @@ const Dashboard = () => {
       <SideBar />
       <Routes>
         <Route path="" element={<DashboardHome />} />
-        <Route path="products" element={<DashboardProducts />} />
-        <Route
-          path="products/update/:id"
-          element={<DashboardUpdateProducts />}
-        />
-        <Route path="products/create" element={<DashboardCreateProduct />} />
+        {user && user.type === "seller" && (
+          <>
+            <Route path="products" element={<DashboardProducts />} />
+            <Route
+              path="products/update/:id"
+              element={<DashboardUpdateProducts />}
+            />
+            <Route
+              path="products/create"
+              element={<DashboardCreateProduct />}
+            />
 
-        <Route path="events" element={<DashboardEvents />} />
-        <Route path="events/create" element={<DashboardCreateEvent />} />
-        <Route path="events/update/:id" element={<DashboardUpdateEvent />} />
+            <Route path="events" element={<DashboardEvents />} />
+            <Route path="events/create" element={<DashboardCreateEvent />} />
+            <Route
+              path="events/update/:id"
+              element={<DashboardUpdateEvent />}
+            />
+            <Route path="orders/create" element={<h1>Create Order</h1>} />
+          </>
+        )}
 
         <Route path="orders" element={<DashboardOrders />} />
-        <Route path="stocks" element={<DashboardStocks />} />
+        {/* <Route path="stocks" element={<DashboardStocks />} /> */}
 
         <Route path="*" element={<_404 />} />
       </Routes>
