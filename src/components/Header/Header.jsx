@@ -347,12 +347,12 @@ const Header = () => {
                       )}
                     </ul>
                     {cart?.cartItems?.length > 0 && (
-                      <a
+                      <Link
                         className="aa-cartbox-checkout aa-primary-btn"
-                        href="checkout.html"
+                        to="/checkout"
                       >
                         Checkout
-                      </a>
+                      </Link>
                     )}
                   </div>
                 </div>

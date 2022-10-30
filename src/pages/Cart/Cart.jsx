@@ -215,9 +215,9 @@ const Cart = () => {
                         </tr>
                       </tbody>
                     </table>
-                    <a href="#" className="aa-cart-view-btn">
+                    <Link to="/checkout" className="aa-cart-view-btn">
                       Proceed to Checkout
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
