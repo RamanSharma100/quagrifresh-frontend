@@ -1,10 +1,10 @@
-import TMember1 from "../../assets/img/Team members/Tanisha.jpeg";
-import TMember2 from "../../assets/img/Team members/Terrence.jpeg";
-import TMember3 from "../../assets/img/Team members/Aaron.jpeg";
-import TMember4 from "../../assets/img/Team members/Raman.jpeg";
-import TMember5 from "../../assets/img/Team members/Tonya.jpeg";
+import TMember1 from '../../assets/img/Team members/Tanisha.jpeg';
+import TMember2 from '../../assets/img/Team members/Terrence.jpeg';
+import TMember3 from '../../assets/img/Team members/Aaron.jpeg';
+import TMember4 from '../../assets/img/Team members/Raman.jpeg';
+import TMember5 from '../../assets/img/Team members/Tonya.jpeg';
 
-import "./About.css";
+import './About.css';
 
 const About = () => {
   return (
@@ -19,14 +19,14 @@ const About = () => {
         <h3 className="tit3 t-center m-b-35 mt-5">Our Story</h3>
 
         <p className="t-center size32 m-l-r-auto">
-          Fusce at risus eget mi auctor pulvinar. Suspendisse maximus venenatis
-          pretium. Orci varius natoque penatibus et magnis dis parturient
-          montes, nascetur ridiculus mus. Aliquam purus purus, lacinia a
-          scelerisque in, luctus vel felis. Donec odio diam, dignissim a
-          efficitur at, efficitur et est. Pellentesque semper est ut pulvinar
-          ullamcorper. Class aptent taciti sociosqu ad litora torquent per
-          conubia nostra, per inceptos himenaeos. Nulla et leo accumsan, egestas
-          velit ac, fringilla tortor. Sed varius justo sed luctus mattis.
+          The Grasslanders Network created Quagrifresh, a one-of-a-kind
+          e-commerce platform for farmers, buyers, and independent delivery
+          drivers. Quagrifresh is a pro - sustainability platform that offers
+          reliable, traceable delivery. Quagrifresh believes that fresh produce
+          can improve people's lives by providing a healthier path to a better
+          life. Organically feeding and transforming the world, Quagrifresh is a
+          platform where people and nature can coexist peacefully. Clean. Green.
+          Sustainable.
         </p>
       </section>
 
@@ -46,8 +46,7 @@ const About = () => {
                         <a
                           className="popup-video"
                           href="https://www.youtube.com/watch?v=HWnXId_Zg4k"
-                          target="_blank"
-                        >
+                          target="_blank">
                           <i className="fa fa-play"></i>
                         </a>
                       </div>
@@ -86,7 +85,7 @@ const About = () => {
                   </a>
 
                   <span className="dis-block t-center txt35 p-b-25">
-                    Webdesign & Frontend
+                    Web Design, Frontend & Content Creator
                   </span>
 
                   <span className="dis-block t-center txt36 p-b-25">India</span>
@@ -112,7 +111,7 @@ const About = () => {
                   </a>
 
                   <span className="dis-block t-center txt35 p-b-25">
-                    Backend & Deployment
+                    Qr Code, Backend & Deployment
                   </span>
 
                   <span className="dis-block t-center txt36 p-b-25">India</span>
@@ -161,7 +160,7 @@ const About = () => {
                   </a>
 
                   <span className="dis-block t-center txt35 p-b-25">
-                    QR Code
+                    Humanitarian & Pamphlet Designer
                   </span>
 
                   <span className="dis-block t-center txt36 p-b-25">
@@ -187,7 +186,7 @@ const About = () => {
                   </a>
 
                   <span className="dis-block t-center txt35 p-b-25">
-                    Communicator
+                    Communicator, Logo Designer & Content Creator
                   </span>
 
                   <span className="dis-block t-center txt36 p-b-25">USA</span>
