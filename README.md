@@ -49,9 +49,7 @@ order specific products. For the consumer, the blog section of our website will 
 
 ## The architecture
 
-[architecture here]
-
-
+![architecture.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1667216865944/4-6ahZWOp.jpeg align="left")
 
 ## Long description
 
@@ -72,7 +70,7 @@ It's in a free tier [vercel](https://www.vercel.com) [frontend] and [railway](ht
 
 See below for our proposed schedule on next steps after Call for Code 2022 submission.
 
-![WhatsApp Image 2022-10-30 at 6.28.09 PM.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1667146905409/B7TblxhEn.jpeg align="left")
+![roadmap.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1667216843455/GomOIXcfb.jpeg align="left")
 
 ## Getting started
 
@@ -155,7 +153,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
   <img src="https://contributors-img.web.app/image?repo=amansharma100/call4code-backend" />
 </a>
 
-- **Raman Sharma** - _Initial work_ - [RamanSharma100](https://github.com/ramansharma100)
+- **Tanisha Joshi** - _initial_work_ - [TanJO07](https://github.com/TanJO07)
+- **Raman Sharma** - _connecting_with_frontend_ - [RamanSharma100](https://github.com/ramansharma100)
 
 ## License
 
