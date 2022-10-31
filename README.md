@@ -49,7 +49,7 @@ order specific products. For the consumer, the blog section of our website will 
 
 ## The architecture
 
-![architecture.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1667216865944/4-6ahZWOp.jpeg align="left")
+![architecture.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1667216865944/4-6ahZWOp.jpeg)
 
 ## Long description
 
@@ -70,7 +70,7 @@ It's in a free tier [vercel](https://www.vercel.com) [frontend] and [railway](ht
 
 See below for our proposed schedule on next steps after Call for Code 2022 submission.
 
-![roadmap.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1667216843455/GomOIXcfb.jpeg align="left")
+![roadmap.jpeg](https://cdn.hashnode.com/res/hashnode/image/upload/v1667216843455/GomOIXcfb.jpeg)
 
 ## Getting started
 
