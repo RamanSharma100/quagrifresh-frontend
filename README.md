@@ -154,7 +154,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 </a>
 
 - **Tanisha Joshi** - _initial_work_ - [TanJO07](https://github.com/TanJO07)
-- **Raman Sharma** - _connecting_with_frontend_ - [RamanSharma100](https://github.com/ramansharma100)
+- **Raman Sharma** - _connecting_backend_with_frontend_ - [RamanSharma100](https://github.com/ramansharma100)
 
 ## License
 
