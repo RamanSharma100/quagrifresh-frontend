@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { getEvents } from "../../redux/actionCreators/events.actionCreators";
+import { useEffect } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { getEvents } from '../../redux/actionCreators/events.actionCreators';
 
-import BannerImage from "../../assets/img/background/banner-02.jpg";
-import PlaceHolderImage from "../../assets/img/quagrifresh.png";
-import { Link } from "react-router-dom";
+import BannerImage from '../../assets/img/background/banner-02.jpg';
+import PlaceHolderImage from '../../assets/img/quagrifresh.png';
+import { Link } from 'react-router-dom';
 
 const Events = () => {
   const { events, isLoading, userId, isAuthenticated } = useSelector(
@@ -34,11 +34,10 @@ const Events = () => {
             className="bg-title-page flex-c-m "
             style={{
               backgroundImage:
-                "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(" +
+                'linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(' +
                 BannerImage +
-                ")",
-            }}
-          >
+                ')',
+            }}>
             <h2 className="tit6 t-center">Events</h2>
           </section>
           <section id="aa-event-category">
@@ -50,19 +49,17 @@ const Events = () => {
                       <div
                         id="carouselExampleIndicators"
                         className="carousel slide card-img-top"
-                        data-bs-ride="carousel"
-                      >
+                        data-bs-ride="carousel">
                         <div className="carousel-indicators">
                           {event.doc.images.map((image, index) => (
                             <button
                               type="button"
                               data-bs-target="#carouselExampleIndicators"
                               data-bs-slide-to={index}
-                              className={index === 0 ? "active" : ""}
+                              className={index === 0 ? 'active' : ''}
                               aria-current="true"
-                              aria-label={"Slide " + index}
-                              key={index}
-                            ></button>
+                              aria-label={'Slide ' + index}
+                              key={index}></button>
                           ))}
                         </div>
                         <div className="carousel-inner">
@@ -70,11 +67,10 @@ const Events = () => {
                             <div
                               className={
                                 index === 0
-                                  ? "carousel-item active"
-                                  : "carousel-item"
+                                  ? 'carousel-item active'
+                                  : 'carousel-item'
                               }
-                              key={index}
-                            >
+                              key={index}>
                               <img
                                 src={image.secure_url}
                                 className="d-block w-100"
@@ -87,24 +83,20 @@ const Events = () => {
                           className="carousel-control-prev"
                           type="button"
                           data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide="prev"
-                        >
+                          data-bs-slide="prev">
                           <span
                             className="carousel-control-prev-icon"
-                            aria-hidden="true"
-                          ></span>
+                            aria-hidden="true"></span>
                           <span className="visually-hidden">Previous</span>
                         </button>
                         <button
                           className="carousel-control-next"
                           type="button"
                           data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide="next"
-                        >
+                          data-bs-slide="next">
                           <span
                             className="carousel-control-next-icon"
-                            aria-hidden="true"
-                          ></span>
+                            aria-hidden="true"></span>
                           <span className="visually-hidden">Next</span>
                         </button>
                       </div>
@@ -129,27 +121,41 @@ const Events = () => {
                         <h5 className="card-title">{event.doc.title}</h5>
 
                         {isAuthenticated && userId === event.doc.eventBy && (
-                          <span className="badge bg-primary">Your Event</span>
+                          <span className="badge bg-primary mx-2">
+                            Your Event
+                          </span>
+                        )}
+
+                        {new Date(event.doc.startDate) > new Date() ? (
+                          <span className="small badge bg-primary">
+                            Upcoming
+                          </span>
+                        ) : new Date(event.doc.endDate) < new Date() ? (
+                          <span className="small badge bg-success">
+                            Completed
+                          </span>
+                        ) : (
+                          <span className="small badge bg-warning">
+                            Ongoing
+                          </span>
                         )}
                       </div>
                       <p
                         dangerouslySetInnerHTML={{
                           __html:
-                            event.doc.description.indexOf("<p>") !== -1
+                            event.doc.description.indexOf('<p>') !== -1
                               ? event.doc.description.slice(
-                                  event.doc.description.indexOf("<p>"),
+                                  event.doc.description.indexOf('<p>'),
                                   151
-                                ) + "..."
-                              : event.doc.description.slice(0, 151) + "...",
+                                ) + '...'
+                              : event.doc.description.slice(0, 151) + '...',
                         }}
-                        className="card-text mt-4"
-                      ></p>
+                        className="card-text mt-4"></p>
                     </div>
                     <div className="card-footer border-top-0 bg-white">
                       <Link
                         to={`/event/${event.doc.title}/${event.id}`}
-                        className="btn form-control btn-primary"
-                      >
+                        className="btn form-control btn-primary">
                         Read More
                       </Link>
                     </div>
@@ -158,8 +164,7 @@ const Events = () => {
                       <div className="card-footer border-top-0 bg-white">
                         <Link
                           to={`/dashboard/events/update/${event.id}`}
-                          className="btn form-control btn-outline-primary"
-                        >
+                          className="btn form-control btn-outline-primary">
                           Edit
                         </Link>
 
