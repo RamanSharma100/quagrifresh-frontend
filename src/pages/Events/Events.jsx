@@ -10,7 +10,7 @@ const Events = () => {
   const { events, isLoading, userId, isAuthenticated } = useSelector(
     (state) => ({
       events: state.events.events?.sort(function (a, b) {
-        return new Date(b.startDate) - new Date(a.startDate);
+        new Date(a.startDate) - return new Date(b.startDate);
       }),
       isLoading: state.events.isLoading,
       userId: state.auth.isAuthenticated && state.auth.user?._id,
