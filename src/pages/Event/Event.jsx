@@ -1,12 +1,12 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import { getEvents } from "../../redux/actionCreators/events.actionCreators";
-import PlaceHolderImage from "../../assets/img/quagrifresh.png";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { getEvents } from '../../redux/actionCreators/events.actionCreators';
+import PlaceHolderImage from '../../assets/img/quagrifresh.png';
 
-import "./Event.css";
-import { getProducts } from "../../redux/actionCreators/products.actionCreators";
+import './Event.css';
+import { getProducts } from '../../redux/actionCreators/products.actionCreators';
 const Event = () => {
   const { id, title } = useParams();
 
@@ -64,16 +64,14 @@ const Event = () => {
                   <div
                     id="carouselExampleControls"
                     className="carousel banner slide w-100 h-100"
-                    data-bs-ride="carousel"
-                  >
+                    data-bs-ride="carousel">
                     <div className="carousel-inner w-100 h-100">
                       {event.doc.images.map((image, index) => (
                         <div
                           key={index * 45}
                           className={`carousel-item ${
-                            index === 0 ? "active" : ""
-                          }`}
-                        >
+                            index === 0 ? 'active' : ''
+                          }`}>
                           <img
                             src={image.secure_url}
                             className="d-block w-100"
@@ -89,34 +87,29 @@ const Event = () => {
                           type="button"
                           data-bs-target="#carouselExampleControls"
                           data-bs-slide-to={index}
-                          className={index === 0 ? "active" : ""}
+                          className={index === 0 ? 'active' : ''}
                           aria-current="true"
-                          aria-label={`Slide ${index + 1}`}
-                        ></button>
-                      ))}{" "}
+                          aria-label={`Slide ${index + 1}`}></button>
+                      ))}{' '}
                     </div>
                     <button
                       className="carousel-control-prev"
                       type="button"
                       data-bs-target="#carouselExampleControls"
-                      data-bs-slide="prev"
-                    >
+                      data-bs-slide="prev">
                       <span
                         className="carousel-control-prev-icon"
-                        aria-hidden="true"
-                      ></span>
+                        aria-hidden="true"></span>
                       <span className="visually-hidden">Previous</span>
                     </button>
                     <button
                       className="carousel-control-next"
                       type="button"
                       data-bs-target="#carouselExampleControls"
-                      data-bs-slide="next"
-                    >
+                      data-bs-slide="next">
                       <span
                         className="carousel-control-next-icon"
-                        aria-hidden="true"
-                      ></span>
+                        aria-hidden="true"></span>
                       <span className="visually-hidden">Next</span>
                     </button>
                   </div>
@@ -143,9 +136,9 @@ const Event = () => {
                       src={
                         userInfo?.avatar
                           ? userInfo?.avatar.secure_url
-                          : "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                          : 'https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'
                       }
-                      alt={"profile"}
+                      alt={'profile'}
                     />
                   </div>
                   <div className="d-flex flex-column justify-content-center">
@@ -154,8 +147,7 @@ const Event = () => {
                         pathname: `/profile/${userInfo?._id}`,
                       }}
                       className="text-dark mt-3"
-                      style={{ fontSize: "1.5rem" }}
-                    >
+                      style={{ fontSize: '1.5rem' }}>
                       {userInfo?.name}
                     </Link>
 
@@ -163,7 +155,11 @@ const Event = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-5 ms-auto d-flex align-items-center justify-content-end">
+              <div className="col-md-7 ms-auto d-flex align-items-center justify-content-end">
+                <p className="bg-primary small mt-3 me-2 rounded-5 fw-bold text-center text-white py-1 px-4">
+                  {new Date(event.doc.startDate).toLocaleString()} -{' '}
+                  {new Date(event.doc.endDate).toLocaleString()}
+                </p>
                 <p className="bg-success small mt-3 me-2 rounded-5 fw-bold text-center text-white py-1 px-4">
                   {userInfo?.type}
                 </p>
@@ -185,9 +181,10 @@ const Event = () => {
                 </h1>
                 <p
                   className="description text-left pr-5 pt-5 pb-3 text-wrap"
-                  style={{ wordWrap: "break-word" }}
-                  dangerouslySetInnerHTML={{ __html: event.doc.description }}
-                ></p>
+                  style={{ wordWrap: 'break-word' }}
+                  dangerouslySetInnerHTML={{
+                    __html: event.doc.description,
+                  }}></p>
               </div>
             </div>
 
@@ -215,8 +212,7 @@ const Event = () => {
                             </p>
                             <Link
                               to={`/product/${product?.id}`}
-                              className="btn ms-5 btn-primary"
-                            >
+                              className="btn ms-5 btn-primary">
                               View Product
                             </Link>
                             <button className="btn ms-5 btn-outline-primary">
